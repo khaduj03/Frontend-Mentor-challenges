@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import './App.css';
 import { FaCalculator } from 'react-icons/fa';
 
 function App() {
-  
+  const [amount , setAmount]=useState("")
+  const [term , setTerm]=useState("")
+  const [interest , setInerest]=useState("")
+
+  const handleChange=(e)=>{
+    e.preventDefault()
+    console.log(amount)
+    console.log(term)
+    console.log(interest)
+  }
   return (
     <div className="flex flex-col bg-[rgba(227,243,251,255)] justify-center items-center w-full h-screen">
       <div className="flex flex-col lg:flex-row bg-white w-screen lg:w-3/5 h-screen lg:h-[400px] shadow-lg lg:rounded-xl">
@@ -18,6 +28,8 @@ function App() {
               <div className='mt-[7px] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] box-border'>
                 <span className='text-xs pl-[10px] w-[30px] h-[10px] justify-center items-center'>$</span>
                 <input
+                value={amount}
+                onChange={(e)=>{setAmount(e.target.value)}}
                   type="text"
                   name="amount"
                   id="amount"
@@ -31,6 +43,8 @@ function App() {
                 <label htmlFor="term" className="text-xs text-[#437087]">Mortgage Term</label>
                 <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
                   <input
+                    value={term}
+                    onChange={(e)=>{setTerm(e.target.value)}}
                     type="text"
                     name="term"
                     id="term"
@@ -44,6 +58,8 @@ function App() {
                 <label htmlFor="rate" className="text-xs text-[#437087]">Interest Rate</label>
                 <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
                   <input
+                    value={interest}
+                    onChange={(e)=>{setInerest(e.target.value)}}
                     type="text"
                     name="rate"
                     id="rate"
@@ -67,6 +83,7 @@ function App() {
               </div>
 
               <button
+              onClick={handleChange}
                 type="submit"
                 className="mt-3 w-full lg:w-[200px] bg-[rgba(217,219,46,255)] text-[rgba(19,48,64,255)] flex justify-center items-center h-[40px] rounded-[30px]"
               >
