@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    
+    <title>Frontend Mentor | Age calculator app</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body>
+    <header>
+        <h1 style="position: absolute; left: -9999px;">Age Calculator</h1> <!-- Hidden but present for accessibility -->
+    </header>
+    <main>
+    <div class="container">
+        <div class="detailes">
+        <div>
+            <label>Day</label>
+            <input type="number" id="dayInput" placeholder="DD" min="1" max="31">
+            <p id="dayError" class="error"></p>
+        </div>
+        <div>
+            <label>Month</label>
+            <input type="number" id="monthInput" placeholder="MM" min="1" max="12">
+            <p id="monthError" class="error"></p>
+        </div>
+        <div>
+            <label>Year</label>
+            <input type="number" id="yearInput" placeholder="YYYY" min="1900" max="2024">
+            <p id="yearError" class="error"></p>
+        </div>
+        <button id="button" onclick="showAge()" aria-label="Calculate Age">
+            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+                <g fill="none" stroke="#FFF" stroke-width="2">
+                    <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/>
+                </g>
+            </svg>
+        </button>
+    </div>
+
+        
+        <section id="result">
+            <p><span id="number1" class="year  nums">- - </span> Year</p>
+            <p><span id="number2" class="month nums">- - </span> Month</p>
+            <p><span id="number3" class="day nums">- - </span> Day</p>
+
+        </section>
+    </div>
+</main>
+    <script src="script.js"></script>
+</body>
+</html> 

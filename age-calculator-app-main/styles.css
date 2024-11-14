@@ -1,0 +1,136 @@
+body {
+    font-family: Poppins, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+}
+.container {
+    position: relative;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px 10px 120px 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    height: 300px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    font-size: smaller;
+    margin-top: 10px;
+}
+input[type="number"] {
+    width: 70px;
+    height: 20px;
+    padding: 8px;
+    margin-right:15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+
+}
+.detailes{
+    position: relative;
+    display: flex;
+    border-bottom:1px solid dimgray;
+    height: 70px;
+    padding-bottom: 20px;
+}
+button {
+    position: absolute;
+    background-color:hsl(259, 100%, 65%);
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -2px;
+    top: 52px;
+}
+        
+
+.error {
+    color: red;
+    font-size: 10px;
+    margin-top: 5px;
+    font-style: italic;
+    position: absolute;
+}
+#result{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    line-height: 0px;
+}
+#result p{
+    font-size: 35px;
+    color: black;
+    font-style: italic;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-left: 10px;
+}
+
+#result p span{color:hsl(259, 100%, 65%);}
+
+
+@keyframes scapUp{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.anim{
+    animation: scapUp 0.3s ease-in-out;
+}
+
+
+
+
+
+
+/* Responsive Mobile Devices */
+@media (max-width: 768px) {
+    .container{
+        width: 277px;
+        height: 365px;
+    }
+    .detailes{
+
+        padding-bottom: 40px;
+    }
+    button {
+        right: 103px;
+        top: 70px;
+    }
+    #result {
+        padding-top: 40px;}
+    
+    .age {
+        padding-top: 20px;
+    }
+}
