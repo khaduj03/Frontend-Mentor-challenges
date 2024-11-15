@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import './App.css';
 import { FaCalculator } from 'react-icons/fa';
 
-function App() {
+function MortgageCalculator() {
   const [amount, setAmount] = useState("");
   const [term, setTerm] = useState("");
   const [interest, setInterest] = useState("");
@@ -81,13 +80,13 @@ function App() {
         <div className={`${error.amount||error.term||error.mortgageType||error.interest?'lg:h-[500px] lg:w-1/2 p-6 flex-col flex':'w-full lg:w-1/2 flex flex-col p-6'}`}>
           <div className="flex justify-between">
             <h1 className="font-sans font-bold text-[rgba(19,48,64,255)]">Mortgage Calculator</h1>
-            <p onClick={handleClear} className=" font-sans text-sm cursor-pointer">Clear All</p>
+            <p onClick={handleClear} className=" text-[#437087] underline font-sans text-sm cursor-pointer">Clear All</p>
           </div>
 
           <form>
             <div className="h-[70px]">
               <label htmlFor="amount" className="text-xs text-[#437087]">Mortgage Amount</label>
-              <div className={`${error.amount ?  'bg-red-600  border-red-500  ':'border-[rgba(19,48,64,255)] bg-[rgba(227,243,251,255)] '}mt-[7px] focus-within:bg-[rgba(217,219,46,255)] relative w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)]  box-border`}>
+              <div className={`${error.amount ?  'bg-red-600  border-red-500  focus-within:bg-red-500 ':'border-[rgba(19,48,64,255)] bg-[rgba(227,243,251,255)] focus-within:bg-[rgba(217,219,46,255)]'}mt-[7px]  focus-within:bg-[rgba(217,219,46,255)] relative w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)]  box-border`}>
                 <span className={` ${error.amount ?'text-white pl-[10px] w-[30px] ':'text-xs pl-[10px] w-[30px] h-[10px] justify-center items-center'}`}>&pound;</span>
                 <input
                   value={amount}
@@ -212,4 +211,4 @@ function App() {
   );
 }
 
-export default App;
+export default MortgageCalculator;
