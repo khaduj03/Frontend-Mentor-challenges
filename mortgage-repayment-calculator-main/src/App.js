@@ -64,7 +64,7 @@ function MortgageCalculator() {
   const handleClear=()=>{
     setAmount("")
     setInterest("")
-    setMortgageType(null)
+    setMortgageType("")
     setTerm("")
     setFailedForm(false)
   }
@@ -141,6 +141,7 @@ function MortgageCalculator() {
               <div className="flex w-full h-[40px] cursor-pointer focus-within:bg-[#f5f5d1] rounded bg-white border-[rgba(19,48,64,255)] border-[1.2px] p-[10px] mt-[7px] focus-within:border-[rgba(217,219,46,255)]">
                 <input 
                 onChange={(e)=>{setMortgageType(e.target.value)}}
+                checked={mortgageType === "repayment"}
                 type="radio"
                 name='martgagetype' 
                  id="repayment"  
@@ -152,6 +153,7 @@ function MortgageCalculator() {
               
               <div className="cursor-pointer flex w-full h-[40px] focus-within:bg-[#f5f5d1] rounded bg-white border-[rgba(19,48,64,255)] border-[1.2px] p-[10px] mt-[7px] focus-within:border-[rgba(217,219,46,255)]">
                 <input 
+                checked={mortgageType === "interest"}
                 onChange={(e)=>{setMortgageType(e.target.value)}}
                 type="radio" 
                 id="interest" 
