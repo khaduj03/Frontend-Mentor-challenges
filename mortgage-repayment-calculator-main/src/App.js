@@ -3,16 +3,40 @@ import './App.css';
 import { FaCalculator } from 'react-icons/fa';
 
 function App() {
-  const [amount , setAmount]=useState("")
-  const [term , setTerm]=useState("")
-  const [interest , setInerest]=useState("")
+  const [amount, setAmount] = useState("");
+  const [term, setTerm] = useState("");
+  const [interest, setInterest] = useState("");
+  const [mortgageType, setMortgageType] = useState("");
 
-  const handleChange=(e)=>{
-    e.preventDefault()
-    console.log(amount)
-    console.log(term)
-    console.log(interest)
-  }
+  const handleInput = (setter) => (e) => {
+    const value = e.target.value;
+  
+    if (value === "" || /^[0-9]*\.?[0-9]*$/.test(value)) {
+      setter(value);
+    }
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const amountNum = parseFloat(amount);
+    const termNum = parseFloat(term) * 12; 
+    const interestNum = parseFloat(interest) / 100;
+    let repyment=true
+
+    if (mortgageType === "repayment") {
+      const monthlyRate = interestNum / 12;
+      const payment = (amountNum * monthlyRate * Math.pow(1 + monthlyRate, termNum)) / (Math.pow(1 + monthlyRate, termNum) - 1);
+      console.log(payment.toFixed(2));
+      console.log("You selected repayment");
+      repyment =true
+    } else {
+      const interestOnly = amountNum * (interestNum / 12);
+      console.log(interestOnly.toFixed(2));
+      console.log("You selected interest only");
+      repyment=false
+    }
+  };
+
   return (
     <div className="flex flex-col bg-[rgba(227,243,251,255)] justify-center items-center w-full h-screen">
       <div className="flex flex-col lg:flex-row bg-white w-screen lg:w-3/5 h-screen lg:h-[400px] shadow-lg lg:rounded-xl">
@@ -28,8 +52,8 @@ function App() {
               <div className='mt-[7px] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] box-border'>
                 <span className='text-xs pl-[10px] w-[30px] h-[10px] justify-center items-center'>$</span>
                 <input
-                value={amount}
-                onChange={(e)=>{setAmount(e.target.value)}}
+                  value={amount}
+                  onChange={handleInput(setAmount)}
                   type="text"
                   name="amount"
                   id="amount"
@@ -44,7 +68,7 @@ function App() {
                 <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
                   <input
                     value={term}
-                    onChange={(e)=>{setTerm(e.target.value)}}
+                    onChange={handleInput(setTerm)}
                     type="text"
                     name="term"
                     id="term"
@@ -59,7 +83,7 @@ function App() {
                 <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
                   <input
                     value={interest}
-                    onChange={(e)=>{setInerest(e.target.value)}}
+                    onChange={handleInput(setInterest)}
                     type="text"
                     name="rate"
                     id="rate"
@@ -69,16 +93,27 @@ function App() {
                 </div>
               </div>
             </div>
-
             <div className="flex flex-col h-auto mt-[15px]">
               <label htmlFor="mortgage-type" className="text-xs text-[#437087]">Mortgage Type</label>
               <div className="flex w-full h-[40px] focus-within:bg-[#f5f5d1] rounded bg-white border-[rgba(19,48,64,255)] border-[1.2px] p-[10px] mt-[7px] focus-within:border-[rgba(217,219,46,255)]">
-                <input type="radio" id="repayment" name="plan" value="Basic" required />
+                <input 
+                onChange={(e)=>{setMortgageType(e.target.value)}}
+                type="radio"
+                name='martgagetype' 
+                 id="repayment"  
+                value="repayment" 
+                 required />
                 <label htmlFor="repayment" className="text-xs font-bold ml-[7px]">Repayment</label>
               </div>
               
               <div className="flex w-full h-[40px] focus-within:bg-[#f5f5d1] rounded bg-white border-[rgba(19,48,64,255)] border-[1.2px] p-[10px] mt-[7px] focus-within:border-[rgba(217,219,46,255)]">
-                <input type="radio" id="interest" name="plan" value="Premium" required />
+                <input 
+                onChange={(e)=>{setMortgageType(e.target.value)}}
+                type="radio" 
+                id="interest" 
+                name='martgagetype' 
+                value="interest" 
+                required />
                 <label htmlFor="interest" className="text-xs font-bold ml-[7px]">Interest Only</label>
               </div>
 
