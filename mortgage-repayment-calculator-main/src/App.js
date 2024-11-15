@@ -31,12 +31,7 @@ function MortgageCalculator() {
     const amountNum = parseFloat(amount);
     const termNum = parseFloat(term) * 12; 
     const interestNum = parseFloat(interest) / 100;
-
-    if(!amount && !term && !interest && !mortgageType){
-      console.log("all is empty")
-    }
     
-
     if (mortgageType === "repayment" && amount && term && interest) {
       setFailedForm(true);
       
@@ -185,7 +180,7 @@ function MortgageCalculator() {
         
         {!failedForm &&(
               <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center lg:rounded-xl lg:rounded-tl-none lg:rounded-bl-[50px] bg-[rgba(19,48,64,255)] mt-6 lg:mt-0">
-              <img src="/illustration-empty.svg" className="w-40 h-40" alt="" />
+              <img src="/illustration-empty.svg" className="w-40 h-40" alt="illustration" />
               <h2 className="text-white font-bold">Results shown here</h2>
               <p className="text-center m-[20px] text-xs text-[#659ab4] font-static">
                 Complete the form and click “calculate repayments” to see what your monthly repayments would be.
