@@ -10,6 +10,7 @@ function App() {
   const [failedForm, setFailedForm]=useState(false)
   const [result , setResult]=useState(null)
   const [ total , setTotal]=useState(null)
+  const [error , setError]=useState("")
 
   const handleInput = (setter) => (e) => {
     const value = e.target.value;
@@ -21,6 +22,13 @@ function App() {
 
   const handleChange = (e) => {
     e.preventDefault();
+    const newErrors={
+      amount:!amount,
+      term:!term,
+      interest:!interest,
+      mortgageType:!mortgageType
+    }
+    setError(newErrors)
     const amountNum = parseFloat(amount);
     const termNum = parseFloat(term) * 12; 
     const interestNum = parseFloat(interest) / 100;
@@ -30,24 +38,28 @@ function App() {
     }
     
 
-    if (mortgageType === "repayment" && amount && term &&interest &&mortgageType ) {
-      setFailedForm(true)
+    if (mortgageType === "repayment" && amount && term && interest) {
+      setFailedForm(true);
+      
       const monthlyRate = interestNum / 12;
       const payment = (amountNum * monthlyRate * Math.pow(1 + monthlyRate, termNum)) / (Math.pow(1 + monthlyRate, termNum) - 1);
-      const totalPayment=payment*termNum
-      let result=payment.toFixed(2)
-      setResult(result)
-      setTotal(totalPayment)
+      const totalPayment = payment * termNum;
+      let result = payment.toFixed(2);
+      setResult(result);
+      setTotal(totalPayment.toFixed(2)); 
     } 
     
-    
-    else if(mortgageType==="interest" && amount && term &&interest &&mortgageType ) {
-      setFailedForm(true)
-      const interestOnly = amountNum * (interestNum / 12);
-      let result=interestOnly.toFixed(2)
-      setResult(result)
-
+    else if (mortgageType === "interest" && amount && term && interest) {
+      setFailedForm(true);
+      
+      const interestOnly = amountNum * (interestNum / 12); 
+      const totalPayment = (interestOnly * termNum) + amountNum; 
+      
+      let result = interestOnly.toFixed(2); 
+      setResult(result);
+      setTotal(totalPayment.toFixed(2)); 
     }
+    
     
     else{
       return failedForm
@@ -65,8 +77,8 @@ function App() {
 
   return (
     <div className="flex flex-col bg-[rgba(227,243,251,255)] justify-center items-center w-full h-screen">
-      <div className="flex flex-col lg:flex-row bg-white w-screen lg:w-3/5 h-screen lg:h-[400px] shadow-lg lg:rounded-xl">
-        <div className="w-full lg:w-1/2 flex flex-col p-6">
+      <div className={` ${error.amount||error.term||error.mortgageType||error.interest?'lg:h-[450px] flex flex-col lg:flex-row bg-white w-screen lg:w-3/5 h-screen shadow-lg lg:rounded-xl':'flex flex-col lg:flex-row bg-white w-screen lg:w-3/5 h-screen lg:h-[400px] shadow-lg lg:rounded-xl'}`}>
+        <div className={`${error.amount||error.term||error.mortgageType||error.interest?'lg:h-[500px] lg:w-1/2 p-6 flex-col flex':'w-full lg:w-1/2 flex flex-col p-6'}`}>
           <div className="flex justify-between">
             <h1 className="font-sans font-bold text-[rgba(19,48,64,255)]">Mortgage Calculator</h1>
             <p onClick={handleClear} className=" font-sans text-sm cursor-pointer">Clear All</p>
@@ -75,8 +87,8 @@ function App() {
           <form>
             <div className="h-[70px]">
               <label htmlFor="amount" className="text-xs text-[#437087]">Mortgage Amount</label>
-              <div className='mt-[7px] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] box-border'>
-                <span className='text-xs pl-[10px] w-[30px] h-[10px] justify-center items-center'>&pound;</span>
+              <div className={`${error.amount ?  'bg-red-600  border-red-500  ':'border-[rgba(19,48,64,255)] bg-[rgba(227,243,251,255)] '}mt-[7px] focus-within:bg-[rgba(217,219,46,255)] relative w-full rounded flex justify-between h-[35px] pb-[12px] pt-[5px] items-center border-[1.2px] focus-within:border-[rgba(217,219,46,255)]  box-border`}>
+                <span className={` ${error.amount ?'text-white pl-[10px] w-[30px] ':'text-xs pl-[10px] w-[30px] h-[10px] justify-center items-center'}`}>&pound;</span>
                 <input
                   value={amount}
                   onChange={handleInput(setAmount)}
@@ -87,11 +99,13 @@ function App() {
                 />
               </div>
             </div>
+            {error.amount&&(<div className='text-xs text-red-400'>this fail is required</div>)}
+            
 
             <div className="flex flex-col lg:flex-row justify-between">
               <div className="w-full lg:w-1/2 lg:mr-2">
                 <label htmlFor="term" className="text-xs text-[#437087]">Mortgage Term</label>
-                <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
+                <div className={`${error.term ?' text-white mt-[7px] border-[1.2px] focus-within:border-red-500 border-red-500 focus-within:bg-red-500 relative bg-red-500 w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border':'mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'}`}>
                   <input
                     value={term}
                     onChange={handleInput(setTerm)}
@@ -101,12 +115,16 @@ function App() {
                     className="w-[80%] focus:outline-none h-8 border-[rgba(227,243,251,255)] p-2 rounded rounded-tr-none rounded-br-none mt-[7px]"
                   />
                   <span className='text-xs w-[35px] h-[10px] justify-center items-center'>Years</span>
+                
                 </div>
+                {error.term&&(<div className='text-xs text-red-400'>This field is required</div>)}
               </div>
+           
+             
 
               <div className="w-full lg:w-1/2 lg:ml-2 mt-4 lg:mt-0">
                 <label htmlFor="rate" className="text-xs text-[#437087]">Interest Rate</label>
-                <div className='mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'>
+                <div className={`${error.interest ?' text-white mt-[7px] border-[1.2px] focus-within:border-red-500 border-red-500 focus-within:bg-red-500 relative bg-red-500 w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border':'mt-[7px] border-[1.2px] focus-within:border-[rgba(217,219,46,255)] border-[rgba(19,48,64,255)] focus-within:bg-[rgba(217,219,46,255)] relative bg-[rgba(227,243,251,255)] w-full rounded flex justify-between h-[35px] pb-[14px] pt-[7px] items-center box-border'}`}>
                   <input
                     value={interest}
                     onChange={handleInput(setInterest)}
@@ -117,8 +135,13 @@ function App() {
                   />
                   <span className='text-xs w-[20px] h-[10px] justify-center items-center'>%</span>
                 </div>
+                {error.interest&&(<div className=' text-xs text-red-400'>This field is required</div>)}
               </div>
             </div>
+            
+            
+
+
             <div className="flex flex-col h-auto mt-[15px]">
               <label htmlFor="mortgage-type" className="text-xs text-[#437087]">Mortgage Type</label>
               <div className="flex w-full h-[40px] cursor-pointer focus-within:bg-[#f5f5d1] rounded bg-white border-[rgba(19,48,64,255)] border-[1.2px] p-[10px] mt-[7px] focus-within:border-[rgba(217,219,46,255)]">
@@ -144,6 +167,7 @@ function App() {
                 required />
                 <label htmlFor="interest" className="cursor-pointer text-xs font-bold ml-[7px]">Interest Only</label>
               </div>
+              {error.mortgageType&&(<div className='text-xs text-red-400'>This field is required</div>)}
 
               <button
               onClick={handleChange}
