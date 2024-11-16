@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function FrontCard() {
+export default function FrontCard({
+    cardName,
+    cardNumber,
+    expDateMM,
+    expDateYY,
+}) {
   return (
     <div>
       <div className="flex relative justify-center items-center  w-[300xp]">
@@ -15,14 +20,14 @@ export default function FrontCard() {
         <div className="border-[1px] border-white w-7 h-7 rounded-full absolute top-[125px] left-[245px] z-50">
           {" "}
         </div>
-        <div className=" text-4xl font-mono  w-[350px] h-[40px] rounded absolute top-[200px] left-[170px] text-white z-50">
-          12345678900{" "}
+        <div className=" text-3xl font-mono  w-[350px] h-[40px] rounded absolute top-[200px] left-[170px] text-white z-50">
+          {cardNumber ? cardNumber :"0000 0000 0000 0000" }
         </div>
         <div className=" text-white text-xs font-mono  w-[100px] h-[30px] rounded absolute top-[260px] left-[170px] z-50">
-          FELICIA LEIRE{" "}
+          {cardName ? cardName :"JANE APPLESEED"}
         </div>
         <div className=" text-white text-xs font-mono  w-[100px] h-[30px] rounded absolute top-[260px] left-[470px] z-50">
-          09/00{" "}
+          {expDateMM?`${expDateMM}/${expDateYY}`:"00/00"}
         </div>
       </div>
     </div>
