@@ -6,11 +6,12 @@ import FrontCard from "./components/FrontCard";
 function App() {
   const [cardName, setCardName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [isCompelted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [expDateMM, setExpDateMM] = useState("");
   const [expDateYY, setExpDateYY] = useState("");
   const [cvc, setCvc] = useState("");
   const [errors, setErrors] = useState("");
+  const [isNumber , setIsNumber]=useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ function App() {
       expDateYY: !expDateYY,
       cvc: !cvc,
     };
-
+    
     if (cardName && cardNumber && expDateMM && expDateYY && cvc) {
       setIsCompleted(true);
     } else {
@@ -30,6 +31,7 @@ function App() {
       setErrors(newErrors);
     }
   };
+
 
   const continueNew = () => {
     setIsCompleted(false);
@@ -41,14 +43,10 @@ function App() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-row">
-      <div className="w-[60%] relative justify-center items-center" 
+    <div className="lg:w-full w-screen h-screen flex flex-col lg:flex-row">
+      <div className="lg:w-[60%] w-screen  relative justify-center items-center">
 
-      >
         <FrontCard
-              className={` transition-transform duration-700 transform-gpu ${
-                isCompelted ? "rotate-y-180" : "rotate-y-0"
-              }`}
           cardName={cardName}
           cardNumber={cardNumber}
           expDateMM={expDateMM}
@@ -56,52 +54,51 @@ function App() {
           cvc={cvc}
         />
 
-        <div className="relative w-[400px] z-30 left-[350px]">
+        <div className="relative w-screen lg:w-[400px]  z-20 lg:left-[260px]">
           <img
-            className="absolute w-[400px] right-28 top-80"
+            className="absolute w-[330px] left-[45px] top-[50px]  lg:w-[400px] lg:right-[200px] lg:top-80"
             src="/images/bg-card-back.png"
             alt=""
           />
-          <div className="w-[100px] h-[50px] absolute z-50 text-2xl text-white left-[190px] top-[410px]">
+          <div className="lg:w-[100px]  lg:h-[50px] absolute z-50 lg:text-2xl text-white top-[125px] left-[300px] lg:left-[190px] lg:top-[410px]">
             {cvc ? cvc : "000"}
           </div>
         </div>
 
-        <img className="w-[60%] h-screen" src="/images/bg-main-desktop.png" alt="" />
+        <img className="lg:w-[60%] w-screen h-[400px] lg:h-screen" src="/images/bg-main-desktop.png" alt="" />
       </div>
 
       <div className="flex justify-center items-center">
-        {/* Add Transition to Form and Complete */}
         <div
-  className={`${
-    isCompelted ? "scale-90 opacity-0" : "scale-100 opacity-100"
-  } transition-all ease-in-out duration-500 transform-gpu`}
->
-  {!isCompelted && (
-    <Form
-      handleSubmit={handleSubmit}
-      cardName={cardName}
-      cardNumber={cardNumber}
-      setCardName={setCardName}
-      setCardNumber={setCardNumber}
-      setExpDateMM={setExpDateMM}
-      setExpDateYY={setExpDateYY}
-      setCvc={setCvc}
-      errors={errors}
-      setErrors={setErrors}
-    />
-  )}
-</div>
+          className={`${
+            isCompleted ? "opacity-0" : "opacity-100"
+          } transition-opacity duration-500 ease-in-out`}
+        >
+          {!isCompleted && (
+            <Form
+            setIsNumber={setIsNumber}
+            isNumber={isNumber}
+              handleSubmit={handleSubmit}
+              cardName={cardName}
+              cardNumber={cardNumber}
+              setCardName={setCardName}
+              setCardNumber={setCardNumber}
+              setExpDateMM={setExpDateMM}
+              setExpDateYY={setExpDateYY}
+              setCvc={setCvc}
+              errors={errors}
+              setErrors={setErrors}
+            />
+          )}
+        </div>
 
-<div
-  className={`${
-    isCompelted ? "scale-100 opacity-100" : "scale-90 opacity-0"
-  } transition-all ease-in-out duration-500 transform-gpu`}
->
-  {isCompelted && <Complete continueNew={continueNew} />}
-</div>
-
-
+        <div
+          className={`${
+            isCompleted ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-500 ease-in-out`}
+        >
+          {isCompleted && <Complete continueNew={continueNew} />}
+        </div>
       </div>
     </div>
   );
