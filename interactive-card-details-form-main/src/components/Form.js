@@ -51,7 +51,7 @@ export default function Form({
             }}
             type="text"
             name="cardName"
-            className={`${errors.cardName?  "border-red-500 border-[1px]":"focus:border-purple-400 "} outline-none border-[1px] p-2 rounded  border-black`}
+            className={`${errors.cardName?  "border-red-500 border-[1px]":"focus:border-purple-400 "} outline-none border-[1px] p-2 rounded  border-gray-200`}
           />
           {errors.cardName && (
             <span className="text-red-500 text-xs">Can't be blank</span>
@@ -68,7 +68,7 @@ export default function Form({
             name="cardNumber"
             type="text"
             maxLength="19"
-            className={`${errors.cardNumber?  "border-red-500 border-[1px]":"focus:border-purple-400 "} outline-none border-[1px] p-2 rounded  border-black`}
+            className={`${errors.cardNumber?  "border-red-500 border-[1px]":"focus:border-purple-400 "} outline-none border-[1px] p-2 rounded  border-gray-200`}
           />
           {errors.cardNumber && (
             <span className="text-red-500 text-xs">Can't be blank</span>

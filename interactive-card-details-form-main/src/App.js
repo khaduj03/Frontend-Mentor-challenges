@@ -60,7 +60,7 @@ function App() {
             src="/images/bg-card-back.png"
             alt=""
           />
-          <div className="lg:w-[100px]  lg:h-[50px] absolute z-50 lg:text-2xl text-white top-[125px] left-[300px] lg:left-[190px] lg:top-[410px]">
+          <div className="lg:w-[100px]  lg:h-[50px] absolute z-50 lg:text-2xl text-white top-[125px] left-[300px] lg:left-[330px] lg:top-[410px]">
             {cvc ? cvc : "000"}
           </div>
         </div>
