@@ -54,7 +54,7 @@ function App() {
           cvc={cvc}
         />
 
-        <div className="relative w-screen lg:w-[400px]  z-20 lg:left-[260px]">
+        <div className="relative w-screen lg:w-[400px]  z-20 lg:left-[260px] ">
           <img
             className="absolute w-[330px] left-[45px] top-[50px]  lg:w-[400px] lg:right-[200px] lg:top-80"
             src="/images/bg-card-back.png"

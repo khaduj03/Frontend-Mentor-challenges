@@ -8,7 +8,7 @@ export default function FrontCard({
 }) {
   return (
     <div>
-      <div className=" lg:w-[400xp] flex  lg:top-[0px] lg:right-0 lg:static  relative top-[100px] right-[130px] w-[330px] z-50 lg:z-50 justify-center items-center ">
+      <div className=" lg:w-[400xp]  flex  lg:top-[0px] lg:right-0 lg:static  relative top-[100px] right-[130px] w-[330px] z-50 lg:z-50 justify-center items-center ">
         <img
           className="z-10 lg:w-[400px]  absolute left-36 top-20"
           src="/images/bg-card-front.png "
