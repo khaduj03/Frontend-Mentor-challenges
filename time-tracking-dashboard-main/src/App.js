@@ -1,97 +1,133 @@
-// App.js
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import routing components
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Profile from "./components/Profile";
 import { motion } from "framer-motion";
-import TimeCard from "./components/TimeCard"; // Import TimeCard component
+import TimeCard from "./components/TimeCard"; 
 
 function App() {
   const src = [
-    { url: "/images/icon-work.svg", bg: "bg-green-500" },
-    { url: "/images/icon-study.svg", bg: "bg-blue-500" },
-    { url: "/images/icon-social.svg", bg: "bg-red-500" },
-    { url: "/images/icon-play.svg", bg: "bg-red-500" },
-    { url: "/images/icon-self-care.svg", bg: "bg-red-500" },
-    { url: "/images/icon-exercise.svg", bg: "bg-red-500" },
+    { url: "/images/icon-work.svg", bg: "bg-[#ff8b64]" },
+    { url: "/images/icon-study.svg", bg: "bg-[#ff5e7d]" },
+    { url: "/images/icon-social.svg", bg: "bg-[#7235d1]" },
+    { url: "/images/icon-play.svg", bg: "bg-[#56c2e5]" },
+    { url: "/images/icon-self-care.svg", bg: "bg-[#f1c75b]" },
+    { url: "/images/icon-exercise.svg", bg: "bg-[#4bcf83]" },
   ];
 
   const TIME_TRACK_DASHBOARD = [
     {
       name: "Work",
       type: "work",
-      daily: 32,
-      weekly: 36,
-      monthly: 180,
+      hrs: {
+        daily: 32,
+        weekly: 36,
+        monthly: 180,
+      },
     },
     {
       name: "Exercise",
       type: "exercise",
-      daily: 4,
-      weekly: 6,
-      monthly: 24,
+      hrs: {
+        daily: 4,
+        weekly: 6,
+        monthly: 24,
+      },
     },
     {
       name: "Play",
       type: "play",
-      daily: 4,
-      weekly: 10,
-      monthly: 40,
+      hrs: {
+        daily: 4,
+        weekly: 10,
+        monthly: 40,
+      },
     },
     {
       name: "Study",
       type: "study",
-      daily: 4,
-      weekly: 16.5,
-      monthly: 66,
+      hrs: {
+        daily: 4,
+        weekly: 16.5,
+        monthly: 66,
+      },
     },
     {
       name: "Social",
       type: "social",
-      daily: 5,
-      weekly: 4.5,
-      monthly: 18,
+      hrs: {
+        daily: 5,
+        weekly: 4.5,
+        monthly: 18,
+      },
     },
     {
       name: "Self care",
       type: "self-care",
-      daily: 2,
-      weekly: 5,
-      monthly: 20,
+      hrs: {
+        daily: 2,
+        weekly: 5,
+        monthly: 20,
+      },
     },
   ];
 
   return (
     <Router>
-      <main className="flex justify-center items-center w-screen h-screen">
-        <div className="w-screen h-screen bg-black flex justify-center items-center">
+      <main className="flex  justify-center items-center w-full h-full lg:h-screen">
+        <div className="flex-col lg:flex-row w-full h-full lg:h-screen bg-black flex justify-center items-center">
           <div className="flex flex-col">
             <Profile />
-            
-            {/* Navigation Links for Daily, Weekly, and Monthly */}
-            <div className="flex flex-col ml-5  justify-center bg-gray-800 rounded-lg p-5 h-[120px] w-[200px] relative top-0 ">
-              <Link
-                to="/daily"
-                className="text-gray-500 hover:text-gray-300 text-lg "
+
+           
+
+            <div className="flex lg:flex-col flex-row lg:mt-0   justify-center bg-gray-800 rounded-lg p-3 h-[60px] lg:h-[120px] w-[300px] lg:mr-0  lg:w-[200px] relative top-0 ">
+              <motion.dev
+                className="w-44 p-4  h-6 relative rounded-sm hover:bg-gray-600"
+                whileHover={{
+                  y: -1,
+                  boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)",
+                }}
               >
-                Daily
-              </Link>
-              <Link
-                to="/weekly"
-                className="text-gray-500 hover:text-gray-300 text-lg "
+                <Link
+                  to="/daily"
+                  className="text-gray-500 pl-2 inset-0 absolute hover:text-gray-300 text-lg "
+                >
+                  Daily
+                </Link>
+              </motion.dev>
+              <motion.dev
+                className="w-44 p-4  h-6 relative rounded-sm hover:bg-gray-600"
+                whileHover={{
+                  y: -1,
+                  boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)",
+                }}
               >
-                Weekly
-              </Link>
-              <Link
-                to="/monthly"
-               className="text-gray-500 hover:text-gray-300 text-lg "
+                <Link
+                  to="/weekly"
+                  className="text-gray-500 pl-2 inset-0 absolute hover:text-gray-300 text-lg "
+                >
+                  Weekly
+                </Link>
+              </motion.dev>
+              <motion.dev
+                className="w-44 p-4  h-6 relative rounded-sm hover:bg-gray-600"
+                whileHover={{
+                  y: -1,
+                  boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)",
+                }}
               >
-                Monthly
-              </Link>
+                <Link
+                  to="/monthly"
+                  className="text-gray-500 pl-2 inset-0 absolute hover:text-gray-300 text-lg "
+                >
+                  Monthly
+                </Link>
+              </motion.dev>
             </div>
           </div>
 
-          {/* Display the TimeCard components based on the route */}
-          <div className="grid grid-cols-3 grid-rows-2 gap-3">
+          
+          
+          <div className="grid lg:grid-cols-3  grid-cols-1  lg:grid-rows-2 lg:gap-3 gap-2">
             <Routes>
               <Route
                 path="/daily"
@@ -105,7 +141,7 @@ function App() {
                     }}
                   >
                     <div
-                      className={`flex justify-end relative pt-0 w-[200px] h-[200px] ${src[index].bg} p-4 rounded-lg`}
+                      className={`flex justify-end relative pt-0 w-[300px] lg:w-[200px] h-[140px] lg:h-[200px] ${src[index].bg} p-4 rounded-lg`}
                     >
                       <img
                         src={src[index].url}
@@ -115,6 +151,8 @@ function App() {
                       <TimeCard
                         name={activity.name}
                         daily={activity.daily}
+                        last={activity.hrs.weekly}
+                        hrs={activity.hrs.daily}
                       />
                     </div>
                   </motion.div>
@@ -132,7 +170,7 @@ function App() {
                     }}
                   >
                     <div
-                      className={`flex justify-end relative pt-0 w-[200px] h-[200px] ${src[index].bg} p-4 rounded-lg`}
+                      className={`flex justify-end relative pt-0 w-[300px] lg:w-[200px] h-[140px] lg:h-[200px] ${src[index].bg} p-4 rounded-lg`}
                     >
                       <img
                         src={src[index].url}
@@ -142,6 +180,8 @@ function App() {
                       <TimeCard
                         name={activity.name}
                         weekly={activity.weekly}
+                        hrs={activity.hrs.weekly}
+                        last={activity.hrs.weekly}
                       />
                     </div>
                   </motion.div>
@@ -159,7 +199,7 @@ function App() {
                     }}
                   >
                     <div
-                      className={`flex justify-end relative pt-0 w-[200px] h-[200px] ${src[index].bg} p-4 rounded-lg`}
+                      className={`flex justify-end relative pt-0 w-[300px] lg:w-[200px] h-[140px] lg:h-[200px] ${src[index].bg} p-4 rounded-lg`}
                     >
                       <img
                         src={src[index].url}
@@ -169,6 +209,8 @@ function App() {
                       <TimeCard
                         name={activity.name}
                         monthly={activity.monthly}
+                        hrs={activity.hrs.monthly}
+                        last={activity.hrs.weekly}
                       />
                     </div>
                   </motion.div>
