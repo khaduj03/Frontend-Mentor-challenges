@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Comment from './component/Comment';
 
 function App() {
+  const [comment , setComment]=useState("")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-slate-200 flex w-full h-screen overflow-y-auto justify-center ">
+      <div className='flex justify-center p-4'>
+      <Comment/>
+      </div>
     </div>
   );
 }

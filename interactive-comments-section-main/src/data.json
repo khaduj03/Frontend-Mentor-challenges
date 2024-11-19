@@ -14,8 +14,8 @@
       "score": 12,
       "user": {
         "image": { 
-          "png": "./images/avatars/image-amyrobson.png",
-          "webp": "./images/avatars/image-amyrobson.webp"
+          "png": "/images/avatars/image-amyrobson.png",
+          "webp": "/images/avatars/image-amyrobson.webp"
         },
         "username": "amyrobson"
       },
@@ -45,6 +45,7 @@
               "png": "./images/avatars/image-ramsesmiron.png",
               "webp": "./images/avatars/image-ramsesmiron.webp"
             },
+            
             "username": "ramsesmiron"
           }
         },
