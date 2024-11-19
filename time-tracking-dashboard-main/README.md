@@ -3,7 +3,7 @@
 A Time Management Dashboard application built using React and styled with Tailwind CSS, featuring smooth and interactive animations powered by Framer Motion. This project is based on a challenge from Frontend Mentor, helping developers practice and refine their front-end skills.
 
 ### 📸 Project Preview
-![Project Screenshot](public/images/screenshot.png)
+![Project Screenshot](public/screenshot.png)
 
 ### 🌟 Features
 
