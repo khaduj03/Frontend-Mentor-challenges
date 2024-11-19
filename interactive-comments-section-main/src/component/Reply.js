@@ -1,11 +1,8 @@
 import React from "react";
 
 const Reply = ({ id, user, content, createdAt, image, username, score }) => {
-  console.log(user);
-  console.log(username);
-  console.log(user === username);
   return (
-    <div className="m-4" key={id}>
+    <div className="m-4 w-[400px] border-l-2 border-slate-100" key={id}>
       <div className="flex flex-row p-3 relative left-20  w-[500px] bg-white h-[130px] rounded m-3 ">
         <div className="flex flex-col w-7 h-20 p-3 bg-slate-200 justify-center items-center rounded">
           <span className="cursor-pointer">+</span>
