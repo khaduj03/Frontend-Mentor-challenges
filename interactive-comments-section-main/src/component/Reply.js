@@ -1,6 +1,16 @@
 import React from "react";
 
-const Reply = ({ id, user, content, createdAt, image, username, score }) => {
+const Reply = ({ 
+        id,
+        user,
+      content, 
+      createdAt, 
+      image, 
+      username, 
+      score,
+      handleReply,
+      isReplyOnclikced
+     }) => {
   return (
     <div className="m-4 w-[400px] border-l-2 border-slate-100" key={id}>
       <div className="flex flex-row p-3 relative left-20  w-[500px] bg-white h-[130px] rounded m-3 ">
@@ -19,13 +29,16 @@ const Reply = ({ id, user, content, createdAt, image, username, score }) => {
             </div>
             <div className="flex flex-row cursor-pointer">
               {user !== username && (
-                <div className="flex flex-row">
+                <div 
+                onClick={()=>{handleReply(id)}} 
+                className="flex flex-row">
                   <img
                     src="/images/icon-reply.svg"
                     className="w-3 h-3 m-1"
                     alt=""
                   />
-                  <span className="text-xs font-bold text-blue-900">Reply</span>
+                  <span
+                  className="text-xs font-bold text-blue-900">Reply</span>
                 </div>
               )}
               {user === username && (
@@ -44,6 +57,7 @@ const Reply = ({ id, user, content, createdAt, image, username, score }) => {
           <p className="text-xs w-[400px] pl-3 p-2">{content}</p>
         </div>
       </div>
+      
     </div>
   );
 };

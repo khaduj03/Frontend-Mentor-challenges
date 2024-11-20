@@ -5,7 +5,7 @@ const CommentSection = ({ image, setInputValue , handleComment}) => {
     <div className="w-[610px] h-[130px] mb-10 rounded bg-white flex justify-center items-center flex-row">
       <form action="" onSubmit={handleComment} className="flex flex-row justify-center items-start">
         <img src={image} className="w-7 h-7 mr-2" alt="" />
-        <input
+        <textarea
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
