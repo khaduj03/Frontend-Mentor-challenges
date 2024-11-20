@@ -30,7 +30,7 @@ const Reply = ({
             <div className="flex flex-row cursor-pointer">
               {user !== username && (
                 <div 
-                onClick={()=>{handleReply(id)}} 
+                onClick={()=>{handleReply(username)}} 
                 className="flex flex-row">
                   <img
                     src="/images/icon-reply.svg"

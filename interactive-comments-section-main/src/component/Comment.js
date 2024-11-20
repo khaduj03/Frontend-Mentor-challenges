@@ -6,16 +6,12 @@ import CommentSection from "./CommentSection";
 const Comment = () => {
   const [comments, setComments] = useState(data.comments);
   const [inputValue, setInputValue] = useState("");
-  const [reply,setReply]=useState( data.comments.map(item=>item.replies))
+  const [reply,setReply]=useState( data.comments)
   const [isReplyOnclikced, setIsReplyOncliked]=useState(false)
   const [id, setId]=useState("")
   const [replyValue , setReplyValue]=useState("")
 
-//   const replies = data.comments.map(comment => ({
-//     id: comment.id,
-//     replies: comment.replies
-//   }));
-//   console.log(replies);
+
   const handleComment = (e) => {
     e.preventDefault();
     if (inputValue.trim() === "") return;
@@ -40,7 +36,7 @@ const Comment = () => {
 
 
  const handleReply=(id)=>{
-    console.log('hello' , id)
+    console.log(id)
     setId(id)
     setIsReplyOncliked(true)
     
@@ -49,7 +45,32 @@ const Comment = () => {
  const handleClickReplay=(e)=>{
     e.preventDefault();
     data.comments.map(reply=>{
-        if(reply.id===id){
+        console.log(reply.replies.map((reply)=> ( reply)))
+        reply.replies.map(replys=>{
+            if(replys.user.username===id){
+                const newReply={
+                    "id":reply.replies.length+1,
+                    "content":replyValue,
+                    "createdAt": "now",
+                    "score": 0,
+                    "replyingTo":replys.user.username,
+                    "user": {
+                      "image": { 
+                        "png": data.currentUser.image.png,
+                      },
+                      
+                      "username": data.currentUser.username
+                  },
+            }
+            console.log(newReply)
+            setReply(reply.replies.push(newReply))
+            setIsReplyOncliked(false)
+    
+        
+            }
+        })
+
+        if(reply.id==id){
             const newReply={
                 "id": reply.replies.length+1,
                 "content":replyValue,
@@ -168,6 +189,7 @@ const Comment = () => {
             {item.replies &&
               item.replies.map((reply) => {
                 return (
+                <div className="flex flex-col w-[400px]">
                   <Reply
                     score={reply.score}
                     replyingTo={reply.replyingTo}
@@ -180,6 +202,31 @@ const Comment = () => {
                     handleReply={handleReply}
                     isReplyOnclikced={isReplyOnclikced}
                   />
+
+                    {isReplyOnclikced && reply.user.username===id && (
+                    <div>
+                    <div className="w-[500px] h-[130px]  relative left-28   rounded  bg-white flex items-center flex-row">
+                  <form action="" onSubmit={handleClickReplay}  className="flex flex-row justify-center items-start">
+                    <img src={data.currentUser.image.png} className="w-7 h-7 mr-2" alt="" />
+                    <textarea
+                     defaultValue={`@${reply.user.username}`}
+                    onChange={(e) => {
+                        setReplyValue(e.target.value);
+                        }}
+                      type="text"
+                      placeholder="Add a comment ..."
+                      className="flex items-start justify-start p-3 w-[320px] h-[90px] border-[1px] outline-none"
+                    />
+                    <input
+                      type="submit"
+                      value={"Reply"}
+                      className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
+                    />
+                  </form>
+                </div>
+                  </div>
+                )}
+                  </div>
                   );
               })}
           </>
