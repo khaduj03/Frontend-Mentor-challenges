@@ -1,11 +1,12 @@
 import React from "react";
 
-const CommentSection = ({ image, setInputValue , handleComment}) => {
+const CommentSection = ({ image, setInputValue,inputValue , handleComment}) => {
   return (
     <div className="w-[610px] h-[130px] mb-10 rounded bg-white flex justify-center items-center flex-row">
-      <form action="" onSubmit={handleComment} className="flex flex-row justify-center items-start">
+      <form action="" onSubmit={(e)=>(handleComment(e))} className="flex flex-row justify-center items-start">
         <img src={image} className="w-7 h-7 mr-2" alt="" />
         <textarea
+        value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
           }}

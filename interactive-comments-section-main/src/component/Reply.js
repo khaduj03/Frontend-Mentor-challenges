@@ -9,6 +9,7 @@ const Reply = ({
       username, 
       score,
       handleReply,
+      handleDeleteREply,
       isReplyOnclikced
      }) => {
   return (
@@ -30,7 +31,7 @@ const Reply = ({
             <div className="flex flex-row cursor-pointer">
               {user !== username && (
                 <div 
-                onClick={()=>{handleReply(username)}} 
+                onClick={()=>{handleReply(id)}} 
                 className="flex flex-row">
                   <img
                     src="/images/icon-reply.svg"
@@ -45,7 +46,9 @@ const Reply = ({
                 <div className="flex flex-row">
                     <div className="flex flex-row mr-1">
                   <img src="/images/icon-delete.svg" className="w-3 h-3 m-2 " alt="" />
-                  <span className="text-xs text-red-500 mt-1 font-bold ">Delete</span></div>
+                  <span className="text-xs text-red-500 mt-1 font-bold "
+                  onClick={()=>{handleDeleteREply(id)}}
+                  >Delete</span></div>
                   <div className="flex flex-row ml-1">
                     <img src="/images/icon-edit.svg" className="w-3 h-3 m-2 " alt="" />
                    <span className="text-xs text-blue-500 mt-1 font-bold ">Edit</span>
