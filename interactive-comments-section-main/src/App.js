@@ -6,7 +6,7 @@ import data from './data.json'
 function App() {
 
   return (
-    <div className="bg-slate-200 flex w-full h-screen overflow-y-auto justify-center ">
+    <div className='w-full flex-col h-full bg-slate-200 flex justify-center items-center'>
       <div className='flex justify-center p-4'>
       <Comment/>
       </div>
