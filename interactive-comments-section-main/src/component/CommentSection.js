@@ -2,7 +2,7 @@ import React from "react";
 
 const CommentSection = ({ image, setInputValue,inputValue , handleComment}) => {
   return (
-    <div  className='bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center'>
+    <div  className='bg-white rounded-xl mt-4 w-[570px] h-[130px] flex flex-row  justify-center items-center'>
       <form action="" onSubmit={(e)=>(handleComment(e))} className="flex flex-row justify-center items-start">
         <img src={image} className="w-7 h-7 mr-2" alt="" />
         <textarea

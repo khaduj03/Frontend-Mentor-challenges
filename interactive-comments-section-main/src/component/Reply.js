@@ -7,7 +7,6 @@ const Reply = ({
   score,
   content,
   user,
-  handleReply,
   id,
   commentId,
   handleDeleteREply,
@@ -48,7 +47,7 @@ const Reply = ({
                 />
                 <span
                   onClick={() => {
-                    handleToReply(id ,commentId,username);
+                    handleToReply(id, commentId, username);
                   }}
                   className="text-blue-800 font-bold text-sm cursor-pointer "
                 >
@@ -74,9 +73,7 @@ const Reply = ({
             )}
           </div>
           <div>
-            <p className="text-xs">
-              {content}
-            </p>
+            <p className="text-xs">{content}</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import Reply from "./Reply";
-import CommentSection from "./CommentSection";
 import ReplySection from "./ReplySection";
 
 const Comments = ({
@@ -17,8 +16,11 @@ const Comments = ({
   handleDelete,
   handleDeleteREply,
   clickToReply,
+  handleEdite,
+  editeCliked,
+  updateComment,
+  replyValue
 }) => {
-    
   return (
     <div>
       <div>
@@ -79,8 +81,11 @@ const Comments = ({
                             src="/images/icon-delete.svg"
                             className="w-3 h-3"
                           />
-                          <span className="text-red-500 font-bold text-xs cursor-pointer"
-                          onClick={()=>{handleDelete(comment.id)}}
+                          <span
+                            className="text-red-500 font-bold text-xs cursor-pointer"
+                            onClick={() => {
+                              handleDelete(comment.id);
+                            }}
                           >
                             Delete
                           </span>
@@ -90,7 +95,10 @@ const Comments = ({
                             src="/images/icon-edit.svg"
                             className="w-3  h-3"
                           />
-                          <span className="text-blue-800 font-bold text-xs">
+                          <span
+                            onClick={() => handleEdite(comment.id)}
+                            className="text-blue-800 font-bold text-xs cursor-pointer"
+                          >
                             Edit
                           </span>
                         </div>
@@ -102,6 +110,33 @@ const Comments = ({
                   </div>
                 </div>
               </div>
+              {editeCliked && id === comment.id && (
+                <div>
+                  <div className="bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center">
+                    <form
+                      action=""
+                      onSubmit={(e) => updateComment(e)}
+                      className="flex flex-row justify-center items-start"
+                    >
+                      {/* <img src={data.currentUser.user.image.png} className="w-7 h-7 mr-2" alt="" /> */}
+                      <textarea
+                        key={id}
+                        defaultValue={` ${replyValue?replyValue:""}`}
+                        onChange={(e) => {
+                          setInputValue(e.target.value);
+                        }}
+                        type="text"
+                        className="flex resize-none default:text-blue-600 rounded-xl items-start p-3 w-[400px] h-[90px] border-[1px] outline-none"
+                      />
+                      <input
+                        type="submit"
+                        value={"Update"}
+                        className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
+                      />
+                    </form>
+                  </div>
+                </div>
+              )}
               {isReplyOnclikced && id === comment.id && (
                 <div>
                   <ReplySection
@@ -115,52 +150,52 @@ const Comments = ({
               )}
             </section>
             <section className="flex items-end flex-col">
-              {comment.replies && comment.replies.map((reply) => (
-                <>
-                  <Reply
-
-                  handleToReply={handleToReply}
-                  handleDeleteREply={handleDeleteREply}
-                  commentId={comment.id}
-                    id={reply.id}
-                    clickToReply={clickToReply}
-                    handleReply={handleReply}
-                    user={user}
-                    img={reply.user.image.png}
-                    username={reply.user.username}
-                    score={reply.score}
-                    content={reply.content}
-                    createdAt={reply.createdAt}
-                  />
-                  {isReplyOnclikced && reply.id === id && (
-                    <div>
-                      <div className="bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center">
-                        <form
-                          action=""
-                          onSubmit={(e) => clickToReply(e)}
-                          className="flex flex-row justify-center items-start"
-                        >
-                          {/* <img src={data.currentUser.user.image.png} className="w-7 h-7 mr-2" alt="" /> */}
-                          <textarea
-                            value={inputValue}
-                            onChange={(e) => {
-                              setInputValue(e.target.value);
-                            }}
-                            type="text"
-                            placeholder={`@${reply.user.username} Reply ...`}
-                            className="flex resize-none default:text-blue-600 rounded-xl items-start p-3 w-[400px] h-[90px] border-[1px] outline-none"
-                          />
-                          <input
-                            type="submit"
-                            value={"Reply"}
-                            className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
-                          />
-                        </form>
+              {comment.replies &&
+                comment.replies.map((reply) => (
+                  <>
+                    <Reply
+                      handleToReply={handleToReply}
+                      handleDeleteREply={handleDeleteREply}
+                      commentId={comment.id}
+                      id={reply.id}
+                      clickToReply={clickToReply}
+                      handleReply={handleReply}
+                      user={user}
+                      img={reply.user.image.png}
+                      username={reply.user.username}
+                      score={reply.score}
+                      content={reply.content}
+                      createdAt={reply.createdAt}
+                    />
+                    {isReplyOnclikced && reply.id === id && (
+                      <div>
+                        <div className="bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center">
+                          <form
+                            action=""
+                            onSubmit={(e) => clickToReply(e)}
+                            className="flex flex-row justify-center items-start"
+                          >
+                            {/* <img src={data.currentUser.user.image.png} className="w-7 h-7 mr-2" alt="" /> */}
+                            <textarea
+                              value={inputValue}
+                              onChange={(e) => {
+                                setInputValue(e.target.value);
+                              }}
+                              type="text"
+                              placeholder={`@${reply.user.username} Reply ...`}
+                              className="flex resize-none default:text-blue-600 rounded-xl items-start p-3 w-[400px] h-[90px] border-[1px] outline-none"
+                            />
+                            <input
+                              type="submit"
+                              value={"Reply"}
+                              className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
+                            />
+                          </form>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </>
-              ))}
+                    )}
+                  </>
+                ))}
             </section>
           </div>
         ))}

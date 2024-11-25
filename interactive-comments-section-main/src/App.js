@@ -10,7 +10,9 @@ function App() {
   const [idUser, setIdUser] = useState(null);
   const [isReplyOnclikced, setIsReplyOncliked] = useState(false);
   const [tag, setTag] = useState("");
-  const [commentId , setCommentId]=useState("")
+  const [commentId, setCommentId] = useState("");
+  const [editeCliked,setEditeCliked]=useState(false)
+  const [replyValue, setReplyValue] = useState("");
 
   useEffect(() => {
     try {
@@ -48,7 +50,7 @@ function App() {
     setInputValue("");
   };
 
-  const handleReply = (id, username,commentId) => {
+  const handleReply = (id, username, commentId) => {
     console.log(username);
     setTag(username);
     setIdUser(id);
@@ -96,11 +98,9 @@ function App() {
     setIsReplyOncliked(false);
   };
 
-
-
-  const handleToReply = (id,commentId,username) => {
+  const handleToReply = (id, commentId, username) => {
     console.log(commentId);
-    setTag(username)
+    setTag(username);
     setCommentId(commentId);
     setIdUser(id);
     comments.map((comment) => {
@@ -112,11 +112,8 @@ function App() {
     });
   };
 
-
-
   const clickToReply = (e) => {
-    e.preventDefault(); 
-  
+    e.preventDefault();
 
     const content = (
       <span>
@@ -132,27 +129,25 @@ function App() {
       score: 0,
       user: {
         image: { png: "./images/avatars/image-juliusomo.png" },
-        username: "juliusomo"
+        username: "juliusomo",
       },
-      replies: []
+      replies: [],
     };
-  
+
     // Update comments state by adding the new reply to the specific comment
     setComments((prevComments) =>
       prevComments.map((comment) => {
-        console.log(comment.id === commentId)
+        console.log(comment.id === commentId);
         if (comment.id === commentId) {
           return { ...comment, replies: [...comment.replies, newReplyComment] };
         }
         return comment;
       })
     );
-  
-    
-    setInputValue(""); 
-    setIsReplyOncliked(false);  
+
+    setInputValue("");
+    setIsReplyOncliked(false);
   };
-  
 
   const handleDelete = (id) => {
     const updatedComments = comments.filter((comment) => comment.id !== id);
@@ -172,79 +167,40 @@ function App() {
     setComments(updatedComments);
   };
 
-  //   const clickReplyToReply = (e, commentId, replyId) => {
-  //     e.preventDefault();
-  //     console.log(commentId)
+  const handleEdite=(id)=>{
+    setIdUser(id)
+    setEditeCliked(true)
+    console.log(id)
+    comments.map(comment=>{
+      if(comment.id===id){
+        console.log(comment) 
+        setReplyValue(comment.content)
+      }
+    }) 
 
-  //     const newReplyComment = {
-  //       id: Math.floor(Math.random() * 10000 + 1),
-  //       content: inputValue,
-  //       createdAt: "just now",
-  //       score: 0,
-  //       user: {
-  //         image: { png: "./images/avatars/image-juliusomo.png" },
-  //         username: "juliusomo"
-  //       },
-  //       replies: []
-  //     };
-
-  //     setComments(prevComments =>
-  //       prevComments.map(comment =>{
-  //         if(comment.id===commentId){
-  //           comment.replies.map(commentReply=>{
-  //             if(commentReply.id===idUser){
-  //               return { ...comment, replies: [...comment.replies, newReplyComment] }}
-  //         } )
-  //         }
-  //  }))
-  //       // comments.map(prevComments=>{
-  //       //   console.log(prevComments.id===commentId)
-  //       //   if (prevComments.id===commentId){
-  //       //     setComments(prev=>{
-  //       //       prev
-  //       //     })
-  //       //   }
-  //       //   prevComments.replies.map(comment=>{
-  //       //     if(idUser===comment.id){
-  //       //       console.log("iam here")
-  //       //     }
-
-  //       //   })
-  //       // })
-
-  //     // setComments(prevComments =>
-  //     //   prevComments.map(comment => {
-  //     //     if (comment.id === commentId) {
-  //     //       // Find the correct comment to reply to
-  //     //       return {
-  //     //         ...comment,
-  //     //         replies: comment.replies.map(reply => {
-  //     //           if (reply.id === replyId) {
-  //     //             // Check if `reply.replies` is an array, otherwise initialize it
-  //     //             const replies = Array.isArray(reply.replies) ? reply.replies : [];
-  //     //             console.log("new:::" , newReplyComment)
-  //     //             // Add the new reply to the replies array
-  //     //             return {
-  //     //               ...reply,
-  //     //               replies: [...replies, newReplyComment]
-  //     //             };
-  //     //           }
-  //     //           return reply; // Return the reply unchanged if it's not the one being replied to
-  //     //         })
-  //     //       };
-  //     //     }
-  //     //     return comment; // Return the comment unchanged if it's not the one being replied to
-  //     //   })
-  //     // );
-  //     setIsReplyOncliked(false)
-  //     setInputValue(""); // Clear the input after replying
-  //   };
+  }
+  const updateComment=(e)=>{
+    e.preventDefault()
+      setComments((prevComments) => {
+      return prevComments.map((comment) => {
+        if (comment.id === idUser) {
+          return { ...comment, content: inputValue }; // Save the edited content
+        }
+        return comment;
+      });
+    });
+    setEditeCliked(false)
+    
+  }
 
   return (
     <div className="w-full flex-col h-full bg-slate-200 flex justify-center items-center">
       <div className="flex flex-col justify-center p-4">
         <Comments
-        handleReply={handleReply}
+        replyValue={replyValue}
+        updateComment={updateComment}
+        editeCliked={editeCliked}
+          handleReply={handleReply}
           clickToReply={clickToReply}
           handleDeleteREply={handleDeleteREply}
           handleDelete={handleDelete}
@@ -257,6 +213,7 @@ function App() {
           handleToReply={handleToReply}
           user={user.username}
           comments={comments}
+          handleEdite={handleEdite}
         />
         {user && user.image ? (
           <CommentSection
@@ -266,7 +223,7 @@ function App() {
             image={user.image.png}
           />
         ) : (
-          <div>در حال بارگذاری...</div>
+          <div>loading...</div>
         )}
       </div>
     </div>

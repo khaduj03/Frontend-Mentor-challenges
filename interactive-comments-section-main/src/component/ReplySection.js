@@ -1,12 +1,22 @@
-import React from 'react'
+import React from "react";
 
-const ReplySection = ({ image, setInputValue,inputValue , clickOnReply,username}) => {
+const ReplySection = ({
+  image,
+  setInputValue,
+  inputValue,
+  clickOnReply,
+  username,
+}) => {
   return (
-    <div  className='bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center'>
-      <form action="" onSubmit={(e)=>(clickOnReply(e))} className="flex flex-row justify-center items-start">
+    <div className="bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center">
+      <form
+        action=""
+        onSubmit={(e) => clickOnReply(e)}
+        className="flex flex-row justify-center items-start"
+      >
         <img src={image} className="w-7 h-7 mr-2" alt="" />
         <textarea
-        value={inputValue}
+          value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
@@ -21,7 +31,7 @@ const ReplySection = ({ image, setInputValue,inputValue , clickOnReply,username}
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default ReplySection
+export default ReplySection;
