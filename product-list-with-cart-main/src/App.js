@@ -38,10 +38,10 @@ function App() {
   
 
   return (
-    <div className="flex flex-row bg-pink-50 w-screen h-auto justify-between">
-      <section className='w-[600px] flex flex-col mt-10'>
-        <h1 className='font-bold text-3xl ml-40'>Desserts</h1>
-        <div className='w-[700px] grid grid-cols-3 grid-rows-3 ml-32 p-5'>
+    <div className="flex flex-col w-screen lg:flex-row bg-pink-50  h-auto justify-between">
+      <section className='lg:w-[600px] flex flex-col mt-10'>
+        <h1 className='font-bold text-3xl ml-8 mb-3 lg:mb-0  lg:ml-40'>Desserts</h1>
+        <div className='lg:w-[700px] lg:grid lg:grid-cols-3 lg:grid-rows-3 lg:ml-32 lg:p-5'>
           {desserts.map(card => (
             <DessertCard
             setCount={setCount}
@@ -62,7 +62,7 @@ function App() {
           ))}
         </div>
       </section>
-      <section className='flex flex-col justify-start items-center p-3 w-[470px] bg-pink-50 '>
+      <section className='flex flex-col justify-start items-center lg:p-3  lg:w-[470px] bg-pink-50 '>
         <OrderCard
         setShowModal={setShowModal}
         setCount={setCount}

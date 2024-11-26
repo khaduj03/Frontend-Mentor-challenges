@@ -52,9 +52,9 @@ const DessertCard = ({setOrderCart,setDesserts,count,idCart,setCount, image, nam
     }
   return (
     <div>
-      <div className="w-[200px] h-[260px] m-2 bg-pink-50  flex flex-col justify-center items-center">
-        <div className="relative w-[170px] h-[170px] flex justify-center items-center cursor-pointer">
-          <img className={`${isAdded ? "border-red-700 border-[2px] shadow-[0px_5px_60px_rgba(0,0,0,0.2)] " : "border-none"} w-[170px] h-[170px] rounded-md`} src={image} alt={name} />
+      <div className="lg:w-[200px] p-8 h-[380px] lg:h-[260px] lg:m-2 bg-pink-50  flex flex-col justify-center items-center">
+        <div className="relative  lg:w-[170px] lg:h-[170px] flex justify-center items-center cursor-pointer">
+          <img className={`${isAdded ? "border-red-700 border-[2px] shadow-[0px_5px_60px_rgba(0,0,0,0.2)] " : "border-none"} lg:w-[170px]  lg:h-[170px] rounded-md`} src={image} alt={name} />
 
           {!isAdded && (
             <div className="flex flex-row justify-center bottom-[-20px] bg-white items-center w-[120px] absolute h-[30px] p-2 space-x-2 rounded-3xl border-[1px] border-black">
@@ -88,7 +88,7 @@ const DessertCard = ({setOrderCart,setDesserts,count,idCart,setCount, image, nam
           )}
         </div>
 
-        <div className="h-[200px] w-[170px] mt-6">
+        <div className="lg:h-[200px] w-[300px] lg:w-[170px] mt-6">
           <p className="text-xs text-gray-500 m-1">{name}</p>
           <p className="text-xs font-bold m-1">{discription}</p>
           <p className="text-red-700 text-xs font-bold m-1">${price}</p>
