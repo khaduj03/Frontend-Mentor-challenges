@@ -11,7 +11,7 @@ function App() {
   const [isReplyOnclikced, setIsReplyOncliked] = useState(false);
   const [tag, setTag] = useState("");
   const [commentId, setCommentId] = useState("");
-  const [editeCliked,setEditeCliked]=useState(false)
+  const [editeCliked, setEditeCliked] = useState(false);
   const [replyValue, setReplyValue] = useState("");
 
   useEffect(() => {
@@ -167,39 +167,86 @@ function App() {
     setComments(updatedComments);
   };
 
-  const handleEdite=(id)=>{
-    setIdUser(id)
-    setEditeCliked(true)
-    console.log(id)
-    comments.map(comment=>{
-      if(comment.id===id){
-        console.log(comment) 
-        setReplyValue(comment.content)
+  const handleEdite = (id) => {
+    setIdUser(id);
+    setEditeCliked(true);
+    comments.map((comment) => {
+      if (comment.id === id) {
+        setReplyValue(comment.content);
       }
-    }) 
-
-  }
-  const updateComment=(e)=>{
-    e.preventDefault()
-      setComments((prevComments) => {
+    });
+  };
+  const updateComment = (e) => {
+    e.preventDefault();
+    setComments((prevComments) => {
       return prevComments.map((comment) => {
         if (comment.id === idUser) {
           return { ...comment, content: inputValue }; // Save the edited content
         }
+        else{
+          comment.replies.map(reply=>{
+            if(reply.id===idUser){
+              return{...reply,content:inputValue}
+            }
+            return reply
+          })
+        }
         return comment;
       });
-    });
-    setEditeCliked(false)
-    
-  }
+    }
+  );
+    setEditeCliked(false);
+  };
 
+
+  const handleEditeReply = (replyId) => {
+    comments.forEach((comment) => {
+      comment.replies.forEach((reply) => {
+        if (reply.id === replyId) {
+          // تنظیم مقدار ورودی برای ویرایش
+          setReplyValue(reply.content || "");
+          setIdUser(replyId);
+          setEditeCliked(true);
+        }
+      });
+    });
+  };
+
+
+  const updateCommentReply = (newContent, replyId) => {
+    const updatedComments = comments.map((comment) => {
+      // بررسی وجود ریپلای‌ها
+      if (comment.replies) {
+        const updatedReplies = comment.replies.map((reply) => {
+          if (reply.id === replyId) {
+            // ایجاد نسخه جدید از ریپلای با محتوای به‌روز شده
+            return { ...reply, content: String(newContent) };
+          }
+          return reply;
+        });
+        // بازگشت نسخه جدید کامنت با ریپلای‌های به‌روز شده
+        return { ...comment, replies: updatedReplies };
+      }
+      return comment; // اگر ریپلای وجود ندارد، کامنت را بدون تغییر برگردانید
+    });
+  
+    setComments(updatedComments);
+    setEditeCliked(false); // بستن حالت ویرایش
+    setReplyValue(""); // پاک کردن فیلد ورودی
+  };
+  
+  
+  
+  
   return (
     <div className="w-full flex-col h-full bg-slate-200 flex justify-center items-center">
       <div className="flex flex-col justify-center p-4">
         <Comments
-        replyValue={replyValue}
-        updateComment={updateComment}
-        editeCliked={editeCliked}
+        handleEditeReply={handleEditeReply}
+        updateCommentReply={updateCommentReply}
+          replyValue={replyValue}
+          updateComment={updateComment}
+          editeCliked={editeCliked}
           handleReply={handleReply}
           clickToReply={clickToReply}
           handleDeleteREply={handleDeleteREply}

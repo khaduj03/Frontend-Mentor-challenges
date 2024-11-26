@@ -19,7 +19,9 @@ const Comments = ({
   handleEdite,
   editeCliked,
   updateComment,
-  replyValue
+  replyValue,
+  updateCommentReply,
+  handleEditeReply
 }) => {
   return (
     <div>
@@ -121,7 +123,7 @@ const Comments = ({
                       {/* <img src={data.currentUser.user.image.png} className="w-7 h-7 mr-2" alt="" /> */}
                       <textarea
                         key={id}
-                        defaultValue={` ${replyValue?replyValue:""}`}
+                        defaultValue={` ${replyValue ? replyValue : ""}`}
                         onChange={(e) => {
                           setInputValue(e.target.value);
                         }}
@@ -154,6 +156,8 @@ const Comments = ({
                 comment.replies.map((reply) => (
                   <>
                     <Reply
+                    handleEditeReply={handleEditeReply}
+                      handleEdite={handleEdite}
                       handleToReply={handleToReply}
                       handleDeleteREply={handleDeleteREply}
                       commentId={comment.id}
@@ -191,6 +195,32 @@ const Comments = ({
                               className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
                             />
                           </form>
+                        </div>
+                      </div>
+                    )}
+                    {editeCliked && reply.id === id && (
+                      <div>
+                        <div className="bg-white rounded-xl  w-[570px] h-[130px] flex flex-row  justify-center items-center">
+                          <div      
+                            className="flex flex-row justify-center items-start"
+                          >
+                            {/* <img src={data.currentUser.user.image.png} className="w-7 h-7 mr-2" alt="" /> */}
+                            <textarea
+                              key={id}
+                              defaultValue={` ${replyValue ? replyValue : ""}`}
+                              onChange={(e) => {
+                                setInputValue(e.target.value);
+                              }}
+                              type="text"
+                              className="flex resize-none default:text-blue-600 rounded-xl items-start p-3 w-[400px] h-[90px] border-[1px] outline-none"
+                            />
+                            <input
+                              type="submit"
+                              value={"Update"}
+                              onClick={() => updateCommentReply(reply.content ,reply.id )}
+                              className="w-20 h-10 ml-2 rounded-lg bg-blue-800 text-white"
+                            />
+                          </div>
                         </div>
                       </div>
                     )}

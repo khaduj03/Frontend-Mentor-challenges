@@ -11,6 +11,8 @@ const Reply = ({
   commentId,
   handleDeleteREply,
   handleToReply,
+  handleEdite,
+  handleEditeReply,
 }) => {
   return (
     <div>
@@ -67,13 +69,15 @@ const Reply = ({
                 </div>
                 <div className="flex flex-row">
                   <img src="/images/icon-edit.svg" className="w-3  h-3" />
-                  <span className="text-blue-800 font-bold text-xs">Edit</span>
+                  <span 
+                  onClick={()=>{handleEditeReply(id)}}
+                  className="text-blue-800 font-bold text-xs cursor-pointer">Edit</span>
                 </div>
               </div>
             )}
           </div>
           <div>
-            <p className="text-xs">{content}</p>
+            <p className="text-xs">{String(content)}</p>
           </div>
         </div>
       </div>
