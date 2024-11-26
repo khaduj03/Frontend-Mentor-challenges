@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { FaTimes } from "react-icons/fa";
 
-const OrderCard = ({ orderCart, setOrderCart,count ,setCount}) => {
+const OrderCard = ({ orderCart, setOrderCart, count, setCount,setShowModal }) => {
   const [total, setTotal] = useState(0);
-  
-
 
   const handleDelete = (id) => {
     setOrderCart((prev) => prev.filter((item) => item.id !== id));
@@ -13,23 +11,22 @@ const OrderCard = ({ orderCart, setOrderCart,count ,setCount}) => {
 
   useEffect(() => {
     const newCount = orderCart.reduce((acc, item) => {
-        return acc +  item.count;
-        
-      }, 0);
+      return acc + item.count;
+    }, 0);
     const newTotal = orderCart.reduce((acc, item) => {
       return acc + item.price * item.count;
-      
     }, 0);
-    setCount(newCount)
+    setCount(newCount);
     setTotal(newTotal);
   }, [orderCart]);
 
   return (
     <div>
-      <div className="bg-white w-[330px] h-[310px] overflow-x-hidden overflow-y-auto rounded-xl mr-32 mt-12">
-        <h1 className="text-red-700 font-bold text-2xl w-full h-11 justify-start ml-4 items-center flex">
+      <div className="bg-white w-[330px] rounded-xl flex flex-col justify-center items-center h-[310px]rounded-xl mr-32 mt-12">
+        <h1 className="text-red-700 font-bold text-2xl w-full h-16 justify-start ml-4 items-center flex">
           Your Cart({count})
         </h1>
+        <div className="h-[300px] w-[330px]  overflow-x-hidden  overflow-y-auto  ">
         {orderCart.map((item) => (
           <motion.div
             key={item.id}
@@ -48,8 +45,10 @@ const OrderCard = ({ orderCart, setOrderCart,count ,setCount}) => {
                 <div className="ml-3">
                   <p className="font-bold ">{item.name}</p>
                   <p className="text-gray-500 text-xs ">
-                    <span className="text-red-700 font-bold">x{item.count} </span> @ ${item.price}{' '}
-                    <span> ${(item.count) * item.price}</span>
+                    <span className="text-red-700 font-bold">
+                      x{item.count}{" "}
+                    </span>{" "}
+                    @ ${item.price} <span> ${item.count * item.price}</span>
                   </p>
                 </div>
               </div>
@@ -64,10 +63,17 @@ const OrderCard = ({ orderCart, setOrderCart,count ,setCount}) => {
             </div>
           </motion.div>
         ))}
-      </div>
-      <div className="total-price">
+       </div>
+        <div className="total-price">
         <p className="font-bold">Total: ${total}</p>
       </div>
+      <div>
+      <button 
+        className="bg-red-700 text-xl relative bottom-0 text-white flex justify-center items-center w-[250px] h-[40px] rounded-lg "
+        onClick={()=>{setShowModal(true)}}>Start new Order</button>
+      </div>
+      </div>
+
     </div>
   );
 };

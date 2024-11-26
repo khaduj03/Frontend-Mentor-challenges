@@ -2,6 +2,7 @@ import { useState } from "react";
 import './App.css';
 import DessertCard from './components/DessertCard';
 import OrderCard from "./components/OrderCard";
+import ModalOrder from "./components/ModalOrder";
 
 function App() {
   const IMAGES=[
@@ -20,6 +21,7 @@ function App() {
   const[desserts,setDesserts]=useState(IMAGES)
   const [cartId , setCartId]=useState(null)
   const[count,setCount]=useState(0)
+  const[showModal,setShowModal]=useState(false)
   
 
   
@@ -62,13 +64,23 @@ function App() {
       </section>
       <section className='flex flex-col justify-start items-center p-3 w-[470px] bg-pink-50 '>
         <OrderCard
+        setShowModal={setShowModal}
         setCount={setCount}
         count={count}
         setOrderCart={setOrderCart}
         orderCart={orderCart}
         />
-
       </section>
+      {showModal&&(
+          <div className="flex justify-center items-center fixed top-0 w-screen h-screen bg-opacity-50 bg-gray-500">
+          <ModalOrder
+          setOrderCart={setOrderCart}
+          setShowModal={setShowModal}
+          orderCart={orderCart}
+          />
+        </div>
+      )}
+
     </div>
   );
 }
