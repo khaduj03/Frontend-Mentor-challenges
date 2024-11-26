@@ -1,46 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
-const DessertCard = ({ image, name, price, discription }) => {
-  const [isAddcartClicked, setIsAddCartClicked] = useState(true);
-  const [addToCart , setAddToCart]=useState("")
+const DessertCard = ({ id, image, name, price, discription, handleAddCart, isAdded }) => {
 
-  const handleAdd=()=>{
-    setIsAddCartClicked(!isAddcartClicked)
-  }
   return (
     <div>
-      <div className="w-[200px] h-[260px] m-2 bg-white flex flex-col justify-center items-center">
-        <div className=" relative w-[170px] h-[170px] flex justify-center items-center cursor-pointer ">
-          <img className="w-[170px] h-[170px] rounded-md" src={image} alt="" />
+      <div className="w-[200px] h-[260px] m-2 bg-pink-50  flex flex-col justify-center items-center">
+        <div className="relative w-[170px] h-[170px] flex justify-center items-center cursor-pointer">
+          <img className="w-[170px] h-[170px] rounded-md border-red-700 border" src={image} alt={name} />
 
-          {isAddcartClicked ?
-          (<div className="flex flex-row justify-center bottom-[-20px]  bg-white items-center w-[120px] absolute h-[30px] p-2  space-x-2 rounded-3xl border-[1px] border-black ">
-            <img
-              src="/assets/images/icon-add-to-cart.svg"
-              alt="the add to cadt icon"
-            />
-            <span
-            onClick={handleAdd}
-             className="text-xs  ">Add to cart</span>
-          </div>
-          ):(
-            <div className="flex flex-row justify-center bottom-[-20px]  bg-red-700 items-center w-[120px] absolute h-[30px] p-2  space-x-6 rounded-3xl  ">
-            <img
-            className= "hover:bg-white hover:text-red-700 fill-transparent  border-white border-[1px] w-4 h-4 p-1 flex justify-center items-center rounded-full "
-              src="/assets/images/icon-decrement-quantity.svg"
-              alt="the add to cadt icon"
-            />
-            <span className="text-xs text-white ">0</span>
-            <img
-             className="border-white border-[1px] w-4 h-4 p-1 flex justify-center items-center rounded-full"
-              src="/assets/images/icon-increment-quantity.svg"
-              alt="the add to cadt icon"
-            />
-          </div>
+          {!isAdded && (
+            <div className="flex flex-row justify-center bottom-[-20px] bg-white items-center w-[120px] absolute h-[30px] p-2 space-x-2 rounded-3xl border-[1px] border-black">
+              <img src="/assets/images/icon-add-to-cart.svg" alt="Add to cart icon" />
+              <span onClick={() => handleAddCart(id, image, price, name)} className="text-xs">Add to cart</span>
+            </div>
+          )}
+
+          {isAdded && (
+            <div className="flex flex-row text-white justify-center bottom-[-20px] bg-red-700 items-center w-[120px] absolute h-[30px] p-2 space-x-6 rounded-3xl">
+              <FaMinus className="hover:bg-white hover:text-red-700 border-white border-[1px] w-4 h-4 p-1 flex justify-center items-center rounded-full" />
+              <span className="text-xs text-white">1</span> {/* تعداد اقلام در سبد خرید */}
+              <FaPlus className="border-white hover:bg-white hover:text-red-700 text-white border-[1px] w-4 h-4 p-1 flex justify-center items-center rounded-full" />
+            </div>
           )}
         </div>
-        
 
         <div className="h-[200px] w-[170px] mt-6">
           <p className="text-xs text-gray-500 m-1">{name}</p>
