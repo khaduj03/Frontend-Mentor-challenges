@@ -2,8 +2,7 @@ import React from "react";
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
-import { useState } from "react";
-const DessertCard = ({num,setOrderCart,setDesserts,cartId,count, setNum,idCart, image, name, price, discription, handleAddCart, isAdded }) => {
+const DessertCard = ({setOrderCart,setDesserts,count,idCart,setCount, image, name, price, discription, handleAddCart, isAdded }) => {
 
     const handleIncrement = (id) => {
         setOrderCart(prev => {
@@ -11,6 +10,7 @@ const DessertCard = ({num,setOrderCart,setDesserts,cartId,count, setNum,idCart, 
             if (item.id === id) {
               return { ...item, count: (item.count || 0) + 1 };
             }
+            
             return item;
 
           });
@@ -20,6 +20,7 @@ const DessertCard = ({num,setOrderCart,setDesserts,cartId,count, setNum,idCart, 
             return prev.map(item => {
                 if (item.id === id) {
                   return { ...item, count: (item.count || 0) + 1 };
+                  
                 }
                 return item;
     
@@ -82,7 +83,6 @@ const DessertCard = ({num,setOrderCart,setDesserts,cartId,count, setNum,idCart, 
               </AnimatePresence>
               <FaPlus 
               onClick={()=>handleIncrement(idCart)}
-            //   onClick={handleIncrement}
               className="border-white hover:bg-white hover:text-red-700 text-white border-[1px] w-4 h-4 p-1 flex justify-center items-center rounded-full" />
             </motion.div>
           )}
@@ -91,7 +91,7 @@ const DessertCard = ({num,setOrderCart,setDesserts,cartId,count, setNum,idCart, 
         <div className="h-[200px] w-[170px] mt-6">
           <p className="text-xs text-gray-500 m-1">{name}</p>
           <p className="text-xs font-bold m-1">{discription}</p>
-          <p className="text-red-700 text-xs font-bold m-1">{price}</p>
+          <p className="text-red-700 text-xs font-bold m-1">${price}</p>
         </div>
       </div>
     </div>

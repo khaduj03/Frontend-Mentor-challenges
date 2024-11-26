@@ -5,21 +5,21 @@ import OrderCard from "./components/OrderCard";
 
 function App() {
   const IMAGES=[
-    {id:1,img:"/assets/images/image-waffle-desktop.jpg" , name:" Waffle" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:2,img:"/assets/images/image-creme-brulee-desktop.jpg" , name:"  Crème Brûlée" , discription:"Vanilla Bean Crème Brûlée",price:"7.00" ,count:1},
-    {id:3,img:"/assets/images/image-macaron-desktop.jpg" , name:" macaron" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:4,img:"/assets/images/image-tiramisu-desktop.jpg" , name:" tiramisu" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:5,img:"/assets/images/image-baklava-desktop.jpg" , name:" baklava" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:6,img:"/assets/images/image-meringue-desktop.jpg" , name:" meringue" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:7,img:"/assets/images/image-cake-desktop.jpg" , name:" cake" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:8,img:"/assets/images/image-brownie-desktop.jpg" , name:" brownie" , discription:"Waffle with Berries",price:"6.50" ,count:1},
-    {id:9,img:"/assets/images/image-panna-cotta-desktop.jpg" , name:" panna" , discription:"Waffle with Berries",price:"6.50" ,count:1},
+    {id:1,img:"/assets/images/image-waffle-desktop.jpg" , name:" Waffle" , discription:"Waffle with Berries",price:6.50 ,count:1},
+    {id:2,img:"/assets/images/image-creme-brulee-desktop.jpg" , name:"  Crème Brûlée" , discription:"Vanilla Bean Crème Brûlée",price:7.00 ,count:1},
+    {id:3,img:"/assets/images/image-macaron-desktop.jpg" , name:" Macaron" , discription:" Macaron Mix of Five",price: 8.00 ,count:1},
+    {id:4,img:"/assets/images/image-tiramisu-desktop.jpg" , name:"  Tiramisu" , discription:" Classic Tiramisu",price:5.50 ,count:1},
+    {id:5,img:"/assets/images/image-baklava-desktop.jpg" , name:"  Baklava" , discription:" Pistachio Baklava",price:4.00 ,count:1},
+    {id:6,img:"/assets/images/image-meringue-desktop.jpg" , name:"Pie" , discription:" Lemon Meringue Pie",price:5.00 ,count:1},
+    {id:7,img:"/assets/images/image-cake-desktop.jpg" , name:" Cake" , discription:" Red Velvet Cake",price:4.50 ,count:1},
+    {id:8,img:"/assets/images/image-brownie-desktop.jpg" , name:" Brownie" , discription:" Salted Caramel Brownie",price:4.50 ,count:1},
+    {id:9,img:"/assets/images/image-panna-cotta-desktop.jpg" , name:" Panna Cotta" , discription:"Vanilla Panna Cotta",price:6.50 ,count:1},
   ]
  
   const [orderCart, setOrderCart] = useState([]);
   const[desserts,setDesserts]=useState(IMAGES)
-  const [num , setNum]=useState(1)
   const [cartId , setCartId]=useState(null)
+  const[count,setCount]=useState(0)
   
 
   
@@ -29,7 +29,7 @@ function App() {
       if (itemExists) {
         return prev; 
       } else {
-        return [...prev, { id, img, price, name, count}]; 
+        return [...prev, { id, img, price, name, count }]; 
       }
     });
   };
@@ -42,12 +42,11 @@ function App() {
         <div className='w-[700px] grid grid-cols-3 grid-rows-3 ml-32 p-5'>
           {desserts.map(card => (
             <DessertCard
+            setCount={setCount}
             setDesserts={setDesserts}
             setOrderCart={setOrderCart}
             cartId={cartId}
             orderCart={orderCart}
-            num={num}
-            setNum={setNum}
               key={card.id}
               idCart={card.id}
               price={card.price}
@@ -63,9 +62,12 @@ function App() {
       </section>
       <section className='flex flex-col justify-start items-center p-3 w-[470px] bg-pink-50 '>
         <OrderCard
+        setCount={setCount}
+        count={count}
         setOrderCart={setOrderCart}
         orderCart={orderCart}
         />
+
       </section>
     </div>
   );
