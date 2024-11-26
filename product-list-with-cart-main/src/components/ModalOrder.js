@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+
 import { FaCheck } from 'react-icons/fa'; 
 
-const ModalOrder = ({ orderCart,setShowModal ,setOrderCart}) => {
+const ModalOrder = ({count, orderCart,setCount,setShowModal,isEmpty ,setOrderCart,setIsempty}) => {
 
     const handleStartNew=()=>{
         setShowModal(false)
         setOrderCart([])
+        setIsempty(false)
     }
+
+    useEffect(() => {
+        const newTotal = orderCart.reduce((acc, item) => {
+            return acc + item.price * item.count;
+          }, 0);
+        setCount(newTotal);
+      }, [orderCart]);
+    
 
   return (
     <div>
+
       <div className="bg-white w-[330px] h-[440px] flex justify-center items-center flex-col  rounded-xl mb-10 ">
         <div className="p-8">
             <FaCheck
@@ -19,6 +29,9 @@ const ModalOrder = ({ orderCart,setShowModal ,setOrderCart}) => {
             <p className="text-3xl font-bold">Order Confirmed</p>
             <p className="text-xs text-gray-400">We hope you enjoy your food!</p>
         </div>
+        {!isEmpty? (<div className="h-[200px] flex justify-center items-center">
+        <img src="/assets/images/illustration-empty-cart.svg" alt="" />
+        </div>):(
         <div className="w-[330px] h-[200px] overflow-y-auto  ">
         {orderCart.map((item) => (
             <div className="flex justify-between overflow-x-hidden items-center flex-row m-2 p-2 rounded-lg ">
@@ -41,13 +54,16 @@ const ModalOrder = ({ orderCart,setShowModal ,setOrderCart}) => {
             </div>
         ))}
         </div>
+        )}
+        <div className="w-[280px] h-10 flex justify-between">
+          <p className="mt-1">Order Total</p>
+          <p className="font-bold text-2xl"> ${count}</p>
+        </div>
         <button 
-        className="bg-red-700 text-xl relative bottom-0 text-white flex justify-center items-center w-[250px] h-[40px] rounded-lg "
+        className="bg-red-700 text-xs relative mb-2 text-white flex justify-center items-center w-[300px] h-[40px] rounded-3xl "
         onClick={handleStartNew}>Start new Order</button>
       </div>
-      {/* <div className="total-price">
-        <p className="font-bold">Total: ${total}</p>
-      </div> */}
+  
     </div>
   );
 };

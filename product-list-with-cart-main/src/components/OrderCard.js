@@ -8,6 +8,7 @@ const OrderCard = ({
   count,
   setCount,
   setShowModal,
+  isEmpty,
 }) => {
   const [total, setTotal] = useState(0);
 
@@ -28,10 +29,13 @@ const OrderCard = ({
 
   return (
     <div>
-      <div className="bg-white lg:w-[330px] rounded-xl flex flex-col justify-center items-center h-[310px]rounded-xl lg:mr-32 lg:mt-6">
+      <div className="bg-white lg:w-[330px] rounded-xl flex flex-col justify-center items-center  lg:mr-32 lg:mt-6">
         <h1 className="text-red-700 font-bold text-2xl w-full h-16 justify-start ml-4 items-center flex">
           Your Cart({count})
         </h1>
+        {!isEmpty? (<div className="h-[200px] flex justify-center items-center">
+        <img src="/assets/images/illustration-empty-cart.svg" alt="" />
+        </div>):(
         <div className="h-[200px] w-[330px]  overflow-x-hidden  overflow-y-auto   border-b-gray-300 border-t-gray-300  border-[1px] ">
           {orderCart.map((item) => (
             <motion.div
@@ -70,6 +74,7 @@ const OrderCard = ({
             </motion.div>
           ))}
         </div>
+        )}
         <div className="w-[280px] h-10 flex justify-between">
           <p className="mt-1">Order Total</p>
           <p className="font-bold text-2xl"> ${total}</p>

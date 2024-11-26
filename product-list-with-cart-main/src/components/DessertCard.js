@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
-const DessertCard = ({setOrderCart,setDesserts,count,idCart,setCount, image, name, price, discription, handleAddCart, isAdded }) => {
+const DessertCard = ({setOrderCart,setDesserts,count,idCart, image, name, price, discription, handleAddCart, isAdded }) => {
 
     const handleIncrement = (id) => {
         setOrderCart(prev => {
@@ -52,7 +52,7 @@ const DessertCard = ({setOrderCart,setDesserts,count,idCart,setCount, image, nam
     }
   return (
     <div>
-      <div className="lg:w-[200px] p-8 h-[380px] lg:h-[260px] lg:m-2 bg-pink-50  flex flex-col justify-center items-center">
+      <div className="lg:w-[200px] p-8 lg:p-0 h-[380px] lg:h-[260px] lg:m-2 bg-pink-50  flex flex-col justify-center items-center">
         <div className="relative  lg:w-[170px] lg:h-[170px] flex justify-center items-center cursor-pointer">
           <img className={`${isAdded ? "border-red-700 border-[2px] shadow-[0px_5px_60px_rgba(0,0,0,0.2)] " : "border-none"} lg:w-[170px]  lg:h-[170px] rounded-md`} src={image} alt={name} />
 
