@@ -12,8 +12,8 @@ This is a simple web application that allows users to browse products, add them 
 ## Installation
 
 1. Clone this repository:
-   ```bash
    git clone <repository-url>
+   
 Install dependencies:
 npm install
 Run the app:
