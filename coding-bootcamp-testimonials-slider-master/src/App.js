@@ -47,9 +47,9 @@ function App() {
         <TestimonialsSlider
             image={data[currentIndex].image}
             text={data[currentIndex].text}
+            handlePrevSlider={handlePrevSlider}
+            handleSlider={handleSlider}
          />
-         <button onClick={handleSlider}>next</button>
-         <button onClick={handlePrevSlider}>prevouse</button>
          <img 
          className="absolute z-10 bottom-0 left-0"
          src="/images/pattern-curve.svg" 
