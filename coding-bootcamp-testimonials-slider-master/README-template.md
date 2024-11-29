@@ -1,111 +1,107 @@
-# Frontend Mentor - Coding bootcamp testimonials slider solution
+### Testimonials Slider Component
 
-This is a solution to the [Coding bootcamp testimonials slider challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/coding-bootcamp-testimonials-slider-4FNyLA8JL). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+A clean and interactive testimonials slider built with React and Framer Motion, designed to provide a smooth user experience with beautiful animations and responsive design.
 
-## Table of contents
+#### Features
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+Interactive Animations: Smooth and user-friendly animations using Framer Motion.
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+Responsive Design: Optimized for both desktop and smaller screens.
 
-## Overview
+Reusable Component: Modular design for easy integration into larger projects.
 
-### The challenge
+Navigation Buttons: Includes "Previous" and "Next" buttons to navigate between testimonials.
 
-Users should be able to:
+#### Technologies Used
 
-- View the optimal layout for the component depending on their device's screen size
-- Navigate the slider using either their mouse/trackpad or keyboard
+React: For building the UI component.
 
-### Screenshot
+Framer Motion: To implement advanced animations.
 
-![](./screenshot.jpg)
+Tailwind CSS: For styling and layout.
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+#### How It Works
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+The TestimonialsSlider component receives the following props:
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+image: URL of the testimonial image.
+
+text: Testimonial text.
+
+handleSlider: Function to handle "Next" button click.
+
+handlePrevSlider: Function to handle "Previous" button click.
+
+
+Animations are handled using the motion component from Framer Motion, ensuring a smooth transition between states.
+
+
+### Screenshots
+
+Desktop View
+![Desktop View](./sreenshot-desktop.png)
+
+
+Mobile View
+
+![Mobile View](./screenshot-sm.png)
+
+### Usage
+
+To use this component in your project, follow these steps:
+1. Install Dependencies
+Ensure you have React and Framer Motion installed in your project:
+npm install framer-motion
+2. Import and Use the Component
+import TestimonialsSlider from "./TestimonialsSlider";
+
+      ```
+      const handleSlider = () => {
+        // Add logic for Next button
+      };
+
+      const handlePrevSlider = () => {
+        // Add logic for Previous button
+      };
+
+      const App = () => (
+        <TestimonialsSlider
+          image="/path-to-image.jpg"
+          text="This is a testimonial."
+          handleSlider={handleSlider}
+          handlePrevSlider={handlePrevSlider}
+        />
+      );
+      ```
+
+  
+  - Frontend Mentor - [@khaduj03](https://www.frontendmentor.io/profile/khaduj03)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## My process
 
-### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+### Feedback and Contributions
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+Feel free to suggest improvements or submit pull requests. Your feedback is valuable for enhancing this component!
 
-### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
+### Sharing
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+1. Frontend Mentor Community: Share your solution in the #finished-projects channel.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+2. Social Media: Share on platforms like LinkedIn or Twitter.
 
-### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+3. Blogging: Write about your experience using platforms like dev.to or Hashnode.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
-### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+Have fun building! 🚀
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**

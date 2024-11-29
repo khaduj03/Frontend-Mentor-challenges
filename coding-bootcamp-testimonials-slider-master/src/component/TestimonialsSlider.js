@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; // Import motion
+import { motion } from "framer-motion"; 
 
 const TestimonialsSlider = ({
   image,
@@ -55,18 +55,18 @@ const TestimonialsSlider = ({
           src={image}
         />
 
-        <div className="flex  absolute z-50 lg:top-[29rem] top-[4rem] lg:left-72 left-36 w-24 p-4 items-center bg-white rounded-3xl justify-between h-10">
+        <div className="flex  absolute z-50 lg:top-[29rem] shadow-[0rem_0.625rem_3.75rem_rgba(0,0,0,0.3)] p-1 top-[4rem] lg:left-72 left-36 w-24  items-center bg-white rounded-3xl justify-between h-10">
           <button
             onClick={handlePrevSlider}
             aria-label="Previous testimonial"
-            className="focus:outline-none"
+            className="focus:outline-none w-8 h-8 mr-1 hover:bg-gray-400   flex rounded-full justify-center items-center"
           >
             <img src="/images/icon-prev.svg" alt="icon prev svg" />
           </button>
           <button
             onClick={handleSlider}
             aria-label="Next testimonial"
-            className="focus:outline-none"
+            className="focus:outline-none w-8 h-8 hover:bg-gray-400   ml-1 flex rounded-full  justify-center items-center"
           >
             <img src="/images/icon-next.svg" alt="icon next svg" />
           </button>

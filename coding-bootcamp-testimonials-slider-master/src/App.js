@@ -57,7 +57,9 @@ function App() {
           src="/images/pattern-curve.svg"
           alt="curve svg"
         />
+        
       </main>
+
     </div>
   );
 }
