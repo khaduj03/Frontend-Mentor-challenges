@@ -2,6 +2,12 @@
 
 This is a responsive interactive card details form built using **React** and **Tailwind CSS**. The application allows users to fill in their card details, validates the input fields, and displays a confirmation message upon successful submission.  
 
+### Screenshots
+![Design Desktop](./screenshot/screenshot.png)
+![DesckTop ](./screenshot/screenshot2.png)
+![mobile](./screenshot/screenshot%20mobile.png)
+
+
 ## Features
 
 - **Real-time Validation**: Ensures that the cardholder name, card number, expiration date, and CVC are valid.  
@@ -28,9 +34,6 @@ This is a responsive interactive card details form built using **React** and **T
 
 4.Open the application in your browser at http://localhost:3000.
 
-### Screenshots
-    Desktop View
-    Mobile View
 
 
 ### Folder Structure
