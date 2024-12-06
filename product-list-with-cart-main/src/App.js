@@ -103,7 +103,7 @@ function App() {
   return (
     <div className="flex flex-col lg:w-screen w-screen lg:flex-row bg-pink-50   h-auto justify-between">
       <section className="lg:w-[600px] flex flex-col mt-10">
-        <h1 className="font-bold text-3xl ml-8 mb-3 lg:mb-0  lg:ml-40">
+        <h1 className="font-bold text-3xl ml-8 mb-10 lg:mb-0  lg:ml-40">
           Desserts
         </h1>
         <div className="lg:w-[700px] lg:grid lg:grid-cols-3 lg:grid-rows-3 lg:ml-32 lg:p-5">

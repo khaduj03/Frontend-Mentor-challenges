@@ -1,100 +1,110 @@
-# Frontend Mentor - Product list with cart
+# Dessert E-Commerce App
 
-![Design preview for the Product list with cart coding challenge](./preview.jpg)
+This is a beautiful dessert e-commerce app that allows users to browse and add desserts to their cart. Users can view dessert details, adjust quantities, and place an order. The application has a smooth user interface with interactive animations powered by [Framer Motion](https://www.framer.com/motion/).
 
-## Welcome! 👋
+## ScreenShot 📸
+![DesckTop](./screenshot/screenshot.png)
+![DesckTop](./screenshot/screenshot2.png)
+![Mobile](./screenshot/screenshot%20mobile.png)
 
-Thanks for checking out this front-end coding challenge.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Features ✨
+- **Interactive Dessert Cards**: Browse a variety of desserts with detailed descriptions and prices.
+- **Cart Management**: Add, remove, or update dessert quantities in the cart.
+- **Modal for Order Confirmation**: Displays the details of the user's order with a "Start New Order" option.
+- **Responsive Design**: The app adapts to various screen sizes for both mobile and desktop views.
+- **Smooth Animations**: Using [Framer Motion](https://www.framer.com/motion/), transitions and animations bring life to the app.
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+## Technologies Used🛠️
 
-## The challenge
+- **React**: The app is built using React for efficient UI rendering.
+- **Framer Motion**: For smooth and elegant animations on page transitions and modal appearances.
+- **React Icons**: For adding user-friendly icons to the UI, like the cart icon and quantity adjustment buttons.
+- **CSS/TailwindCSS**: TailwindCSS is used for styling the components with responsive and clean layouts.
 
-Your challenge is to build out this product list project that includes a functional cart and get it looking as close to the design as possible.
+## Installation🖥️
 
-You can use any tools you like to help you complete the challenge. So, if you have something you'd like to practice, feel free to give it a go.
+To run the project locally, follow the steps below:
 
-We provide the data for the products in a local `data.json` file. So you can use that to populate the UI dynamically if you choose.
+1. **Clone the repository**:
 
-Your users should be able to: 
+    ```
+    git clone https://github.com/khaduj03/Frontend-Mentor-challenges.git
+    ```
 
-- Add items to the cart and remove them
-- Increase/decrease the number of items in the cart
-- See an order confirmation modal when they click "Confirm Order"
-- Reset their selections when they click "Start New Order"
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+2. **Navigate to the project folder**:
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+    ```
+    cd product-list-with-cart-main
+    ```
 
-## Where to find everything
+3. **Install dependencies**:
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+    ```
+    npm install
+    ```
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+4. **Start the development server**:
 
-If you would like the Figma design file to gain experience using professional tools and build more accurate projects faster, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+    ```
+    npm start
+    ```
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+## How It Works⚙️
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+1. **Dessert Cards**: Each dessert is displayed with an image, name, description, and price. Users can add a dessert to the cart by clicking the **Add to Cart** button.
 
-## Building your project
+2. **Cart Interaction**:
+    - **Add to Cart**: Clicking the button will add the selected dessert to the cart. 
+    - **Quantity Adjustment**: Once added, users can adjust the quantity of a dessert in the cart with the `+` and `-` buttons.
+    - **Cart Details**: The cart displays the dessert items with their quantities, individual prices, and a total price.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+3. **Order Confirmation**:
+    - When the user clicks **Confirm Order**, a modal will appear showing the summary of the order and the total price.
+    - The user can start a new order by clicking the **Start New Order** button.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+## File Structure
 
-## Deploying your project
+```
+dessert-ecommerce/
+├── public/
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── image-waffle-desktop.jpg
+│   │   │   ├── image-creme-brulee-desktop.jpg
+│   │   │   ├── image-macaron-desktop.jpg
+│   │   │   ├── image-tiramisu-desktop.jpg
+│   │   │   ├── image-baklava-desktop.jpg
+│   │   │   ├── image-meringue-desktop.jpg
+│   │   │   ├── image-cake-desktop.jpg
+│   │   │   └── image-brownie-desktop.jpg
+│   │   └── icon-add-to-cart.svg
+├── src/
+│   ├── components/
+│   │   ├── DessertCard.js
+│   │   ├── OrderCard.js
+│   │   └── ModalOrder.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── package.json
+└── README.md
+```
+Components
+App.js
+The main application component that holds the state for the order cart and renders the dessert cards and the order card components. It also controls the modal display for the order confirmation.
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+DessertCard.js
+This component represents a single dessert item, showing its image, name, description, and price. Users can add the item to the cart or adjust the quantity if already added.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+OrderCard.js
+This component displays the user's cart with the dessert items added. It includes options to confirm the order or start a new order. It also shows the total price of all items in the cart.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+ModalOrder.js
+This component shows a modal confirming the order. It displays the details of the order, the total cost, and allows the user to start a new order.
 
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+### Acknowledgments 🙌
+Inspired by various online Dessert E-Commerce App.
+Special thanks to Frontend Mentor for design inspirations.

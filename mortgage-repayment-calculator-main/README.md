@@ -1,70 +1,101 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Mortgage Calculator 🏠
+  A responsive and interactive web application for calculating mortgage payments based on user input. This project allows users to determine their monthly repayments and total payment amounts using either a repayment mortgage or an interest-only mortgage.
 
-## Available Scripts
 
-In the project directory, you can run:
+### Screenshots 📸
+![DesckTop](./screenshot/screenshot.png)
+![Mobile](./screenshot/screenshot%20mobile.png)
 
-### `npm start`
+### Features ✨
+  Dynamic Input Validation: Ensures valid values for mortgage amount, term, and interest rate.
+  Two Mortgage Types:
+        Repayment Mortgage: Calculates monthly repayments and total payment over the term.
+        Interest-Only Mortgage: Calculates monthly interest payments.
+  Responsive Design: Built using Tailwind CSS for an adaptive user experience on all devices.
+  Error Handling: User-friendly messages for invalid or incomplete inputs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Technologies Used 🛠️
+    React: For building the user interface.
+    Tailwind CSS: For styling and responsive design.
+    JavaScript: For calculations and form handling.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to Use 🖥️
+    Clone the repository:
+        git clone  https://github.com/khaduj03/Frontend-Mentor-challenges.git
 
-### `npm run build`
+    Navigate to the project directory:
+        cd mortgage-calculator
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    Install dependencies:
+        npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Run the application:
+        npm start
+          Open http://localhost:3000 in your browser to view the app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### How It Works ⚙️
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-Input Fields
+      Enter the mortgage amount, term (in years), and interest rate.
+      Select the type of mortgage (Repayment or Interest Only).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Validation:
+      Fields must be filled in correctly (e.g., valid number inputs).
+      Displays error messages for incorrect or missing inputs.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-Calculation:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Repayment Mortgage:
+    “M\=(1+r)n−1P⋅r⋅(1+r)n​”
 
-## Learn More
+    “where MMM is the monthly payment, PPP is the principal amount, rrr is the monthly interest rate, and nnn is the number of payments.”
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-Interest-Only Mortgage:
+      Monthly interest = Principal × Monthly Interest Rate.
 
-### Code Splitting
+-Results Display:
+      Shows the calculated monthly repayment and total payment.
+      Animates result changes for better user experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Challenges Faced 🚀
+    -Dynamic Animations: Smoothly updating results when input values change.
+    -Validation Handling: Ensuring user-friendly error messages for various invalid inputs.
+    -Mortgage Calculation Logic: Implementing accurate formulas for repayment and interest-only   mortgages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Future Improvements 🔧
+    -Add localization for multiple languages.
+    -Implement user authentication for saving mortgage calculations.
+    -Allow exporting results as PDF for user convenience.
+    -Include a graph representation of payments over time.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Contributing 🤝
+Contributions are welcome! If you'd like to contribute to this project:
 
-### `npm run build` fails to minify
+1-Fork the repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2-Create a new branch:
+      git checkout -b feature-name
+
+3-Commit your changes:
+      git commit -m "Add new feature"
+
+4-Push to the branch:
+      git push origin feature-name
+
+5-Submit a pull request.
+
+
+### Acknowledgments 🙌
+Inspired by various online mortgage calculators.
+Special thanks to Frontend Mentor for design inspirations.
